@@ -78,7 +78,8 @@ public class GamePanel extends JPanel implements Runnable {
                 lag -= nanosecondsPerFrame;
             }
             // Drawing to the screen usually is independent of game logic, thus it can be done
-            // without a fixed time step.
+            // without a fixed time step. If it later on also needs to be fixed, just move it
+            // into the loop above.
             repaint();
         }
     }
