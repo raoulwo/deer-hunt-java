@@ -1,5 +1,7 @@
 package dev.raoulwo;
 
+import dev.raoulwo.entity.Player;
+
 import javax.swing.*;
 import java.awt.*;
 
@@ -8,13 +10,13 @@ import java.awt.*;
  */
 public class GamePanel extends JPanel implements Runnable {
     // Original tile size in pixels.
-    final int originalTileSize = 64;
+    final int originalTileSize = 16;
 
     // Factor by which we'll scale the tiles.
-    final int scale = 1;
+    final int scale = 3;
 
     // Scaled tile size in pixels calculated by original tile size and scale factor.
-    final int scaledTileSize = originalTileSize * scale;
+    public final int scaledTileSize = originalTileSize * scale;
 
     // Maximum number of vertical/horizontal tiles on the screen (by default 4x3 ratio).
     final int maxScreenColumns = 16;
@@ -33,6 +35,8 @@ public class GamePanel extends JPanel implements Runnable {
     Thread gameThread;
     // The key handler will listen for user's key inputs.
     KeyHandler keyHandler = new KeyHandler();
+
+    Player player = new Player(this, keyHandler);
 
     // The player coordinates in pixels.
     int playerX = 100;
@@ -88,18 +92,7 @@ public class GamePanel extends JPanel implements Runnable {
      * Contains game logic and updates game information. Will be called each frame.
      */
     public void update() {
-        if (keyHandler.upPressed) {
-            playerY -= playerSpeed;
-        }
-        else if (keyHandler.downPressed) {
-            playerY += playerSpeed;
-        }
-        else if (keyHandler.leftPressed) {
-            playerX -= playerSpeed;
-        }
-        else if (keyHandler.rightPressed) {
-            playerX += playerSpeed;
-        }
+        player.update();
     }
 
     /**
@@ -112,9 +105,7 @@ public class GamePanel extends JPanel implements Runnable {
         super.paintComponent(g);
 
         Graphics2D g2d = (Graphics2D) g;
-        g2d.setColor(Color.WHITE);
-        // This rect represents a controllable player character for now.
-        g2d.fillRect(playerX, playerY, scaledTileSize, scaledTileSize);
+        player.draw(g2d);
 
         // The graphics object needs to be disposed after use to save some memory.
         g2d.dispose();
