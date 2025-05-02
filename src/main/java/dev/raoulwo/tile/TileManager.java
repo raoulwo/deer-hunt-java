@@ -12,15 +12,17 @@ import java.util.HashMap;
 public class TileManager {
     GamePanel gamePanel;
 
+    // TODO: No encapsulation to be found, have to refactor and clean that up later on.
+
     // Contains the plaintext encoded tile information for the map of a level. We could later on have different maps
     // if we wanted to.
-    String[][] map;
+    public String[][] map;
 
     // Maps the tile codes used for serializing map layouts to the corresponding tile names.
-    HashMap<String, String> tileCodeToTileName = new HashMap<>();
+    public HashMap<String, String> tileCodeToTileName = new HashMap<>();
 
     // Maps the names of all tiles to their corresponding tile objects.
-    HashMap<String, Tile> tiles = new HashMap<>();
+    public HashMap<String, Tile> tiles = new HashMap<>();
 
     public TileManager(GamePanel gamePanel) {
         this.gamePanel = gamePanel;
@@ -87,6 +89,9 @@ public class TileManager {
             System.out.println("Error loading tiles");
             e.printStackTrace();
         }
+
+        // TODO: Hard-code collision for now to test collision detection, change later.
+        tiles.get("floor_50").collision = true;
     }
 
     void loadTiles() throws IOException {
@@ -98,6 +103,11 @@ public class TileManager {
 
             tiles.put(file, new Tile(sprite));
         }
+    }
+
+    public Tile getTileByMapCode(String mapCode) {
+        String tileName = tileCodeToTileName.get(mapCode);
+        return tiles.get(tileName);
     }
 
     public void draw(Graphics2D g2d) {

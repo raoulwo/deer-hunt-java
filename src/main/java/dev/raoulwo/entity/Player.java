@@ -36,9 +36,15 @@ public class Player extends Entity {
 
         screenX = gamePanel.screenWidth / 2 - gamePanel.scaledTileSize / 2;
         screenY = gamePanel.screenHeight / 2 - gamePanel.scaledTileSize / 2;
-        worldX = gamePanel.scaledTileSize * 3;
-        worldY = gamePanel.scaledTileSize * 3;
-        speed = 4;
+        worldX = gamePanel.scaledTileSize * 12;
+        worldY = gamePanel.scaledTileSize * 10;
+        speed = 8;
+
+        collisionBox = new Rectangle();
+        collisionBox.x = 8;
+        collisionBox.y = 16;
+        collisionBox.width = 32;
+        collisionBox.height = 32;
 
         try {
             loadPlayerSprites(color);
@@ -87,18 +93,37 @@ public class Player extends Entity {
             return;
         }
 
+        // Update player direction.
         if (keyHandler.upPressed) {
             direction = Direction.UP;
-            worldY -= speed;
         } else if (keyHandler.downPressed) {
             direction = Direction.DOWN;
-            worldY += speed;
         } else if (keyHandler.leftPressed) {
             direction = Direction.LEFT;
-            worldX -= speed;
         } else if (keyHandler.rightPressed) {
             direction = Direction.RIGHT;
-            worldX += speed;
+        }
+
+        // Check for collisions with terrain.
+        hasCollided = false;
+        gamePanel.collisionHandler.checkTileCollision(this);
+
+        // Update the player position if no collision.
+        if (!hasCollided) {
+            switch (direction) {
+                case UP:
+                    worldY -= speed;
+                    break;
+                case DOWN:
+                    worldY += speed;
+                    break;
+                case LEFT:
+                    worldX -= speed;
+                    break;
+                case RIGHT:
+                    worldX += speed;
+                    break;
+            }
         }
 
         // TODO: Clean up the animation logic, probably needs to be done when we have a lot more possible player states.

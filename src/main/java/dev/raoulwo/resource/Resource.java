@@ -45,8 +45,8 @@ public class Resource {
 
     public static String[][] loadMap(String pathPrefix, String file) throws IOException {
         // TODO: Hard-coded map dimensions for now.
-        final int ROW = 12;
-        final int COL = 16;
+        final int ROW = 32;
+        final int COL = 44;
         String[][] tileCodes = new String[ROW][COL];
 
         try (InputStream stream = Resource.class.getResourceAsStream(pathPrefix + file)) {

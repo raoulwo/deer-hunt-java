@@ -28,8 +28,8 @@ public class GamePanel extends JPanel implements Runnable {
     public final int screenHeight = scaledTileSize * maxScreenRows;
 
     // Maximum number of tiles in the world, chosen arbitrarily for now.
-    public final int maxWorldColumns = 16;
-    public final int maxWorldRows = 12;
+    public final int maxWorldColumns = 44;
+    public final int maxWorldRows = 32;
 
     public final int worldWidth = scaledTileSize * maxWorldColumns;
     public final int worldHeight = scaledTileSize * maxWorldRows;
@@ -45,7 +45,8 @@ public class GamePanel extends JPanel implements Runnable {
     KeyHandler keyHandler = new KeyHandler();
 
     public Player player = new Player(this, keyHandler);
-    TileManager tileManager = new TileManager(this);
+    public TileManager tileManager = new TileManager(this);
+    public CollisionHandler collisionHandler = new CollisionHandler(this);
 
     public GamePanel() {
         setPreferredSize(new Dimension(screenWidth, screenHeight));
