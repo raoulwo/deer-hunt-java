@@ -2,13 +2,11 @@ package dev.raoulwo.entity;
 
 import dev.raoulwo.GamePanel;
 import dev.raoulwo.KeyHandler;
+import dev.raoulwo.resource.Resource;
 
-import javax.imageio.ImageIO;
 import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
-import java.io.InputStream;
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
@@ -47,53 +45,36 @@ public class Player extends Entity {
     // TODO: Move this logic into its own class for loading assets.
     public void loadPlayerSprites(PlayerColor color) throws IOException {
         String idlePath = "/sprites/players/ninja_" + color.name().toLowerCase() + "/idle/";
-        idle.put(Direction.DOWN, loadSprite(idlePath, "idle_south.png"));
-        idle.put(Direction.UP, loadSprite(idlePath, "idle_north.png"));
-        idle.put(Direction.LEFT, loadSprite(idlePath, "idle_west.png"));
-        idle.put(Direction.RIGHT, loadSprite(idlePath, "idle_east.png"));
+        idle.put(Direction.DOWN, Resource.loadSprite(idlePath, "idle_south.png"));
+        idle.put(Direction.UP, Resource.loadSprite(idlePath, "idle_north.png"));
+        idle.put(Direction.LEFT, Resource.loadSprite(idlePath, "idle_west.png"));
+        idle.put(Direction.RIGHT, Resource.loadSprite(idlePath, "idle_east.png"));
 
         String walkingPath = "/sprites/players/ninja_" + color.name().toLowerCase() + "/walk/";
-        walking.put(Direction.DOWN, loadSprites(walkingPath,
+        walking.put(Direction.DOWN, Resource.loadSprites(walkingPath,
                 "walk_south_01.png",
                 "walk_south_02.png",
                 "walk_south_03.png",
                 "walk_south_04.png"
         ));
-        walking.put(Direction.UP, loadSprites(walkingPath,
+        walking.put(Direction.UP, Resource.loadSprites(walkingPath,
                 "walk_north_01.png",
                 "walk_north_02.png",
                 "walk_north_03.png",
                 "walk_north_04.png"
         ));
-        walking.put(Direction.LEFT, loadSprites(walkingPath,
+        walking.put(Direction.LEFT, Resource.loadSprites(walkingPath,
                 "walk_west_01.png",
                 "walk_west_02.png",
                 "walk_west_03.png",
                 "walk_west_04.png"
         ));
-        walking.put(Direction.RIGHT, loadSprites(walkingPath,
+        walking.put(Direction.RIGHT, Resource.loadSprites(walkingPath,
                 "walk_east_01.png",
                 "walk_east_02.png",
                 "walk_east_03.png",
                 "walk_east_04.png"
         ));
-    }
-
-    public BufferedImage loadSprite(String pathPrefix, String file) throws IOException {
-        try  (InputStream stream = getClass().getResourceAsStream(pathPrefix + file)) {
-            if (stream == null) {
-                throw new IOException("File not found");
-            }
-            return ImageIO.read(stream);
-        }
-    }
-
-    public ArrayList<BufferedImage> loadSprites(String pathPrefix, String... files) throws IOException {
-        ArrayList<BufferedImage> sprites = new ArrayList<>();
-        for (String file : files) {
-            sprites.add(loadSprite(pathPrefix, file));
-        }
-        return sprites;
     }
 
     public void update() {

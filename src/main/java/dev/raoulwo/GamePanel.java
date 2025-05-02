@@ -1,6 +1,7 @@
 package dev.raoulwo;
 
 import dev.raoulwo.entity.Player;
+import dev.raoulwo.tile.TileManager;
 
 import javax.swing.*;
 import java.awt.*;
@@ -19,8 +20,8 @@ public class GamePanel extends JPanel implements Runnable {
     public final int scaledTileSize = originalTileSize * scale;
 
     // Maximum number of vertical/horizontal tiles on the screen (by default 4x3 ratio).
-    final int maxScreenColumns = 16;
-    final int maxScreenRows = 12;
+    public final int maxScreenColumns = 16;
+    public final int maxScreenRows = 12;
 
     // The actual screen dimensions calculated by scaled tile size and number of tiles.
     final int screenWidth = scaledTileSize * maxScreenColumns;
@@ -37,12 +38,7 @@ public class GamePanel extends JPanel implements Runnable {
     KeyHandler keyHandler = new KeyHandler();
 
     Player player = new Player(this, keyHandler);
-
-    // The player coordinates in pixels.
-    int playerX = 100;
-    int playerY = 100;
-
-    int playerSpeed = 4;
+    TileManager tileManager = new TileManager(this);
 
     public GamePanel() {
         setPreferredSize(new Dimension(screenWidth, screenHeight));
@@ -105,6 +101,8 @@ public class GamePanel extends JPanel implements Runnable {
         super.paintComponent(g);
 
         Graphics2D g2d = (Graphics2D) g;
+        // Order of drawing determines which sprites are on top or on bottom.
+        tileManager.draw(g2d);
         player.draw(g2d);
 
         // The graphics object needs to be disposed after use to save some memory.
