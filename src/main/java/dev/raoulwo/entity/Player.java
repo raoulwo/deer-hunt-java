@@ -18,6 +18,9 @@ public class Player extends Entity {
     GamePanel gamePanel;
     KeyHandler keyHandler;
 
+    public final int screenX;
+    public final int screenY;
+
     HashMap<Direction, BufferedImage> idle = new HashMap<>();
     HashMap<Direction, List<BufferedImage>> walking = new HashMap<>();
 
@@ -31,8 +34,10 @@ public class Player extends Entity {
         this.gamePanel = gamePanel;
         this.keyHandler = keyHandler;
 
-        x = 100;
-        y = 100;
+        screenX = gamePanel.screenWidth / 2 - gamePanel.scaledTileSize / 2;
+        screenY = gamePanel.screenHeight / 2 - gamePanel.scaledTileSize / 2;
+        worldX = gamePanel.scaledTileSize * 3;
+        worldY = gamePanel.scaledTileSize * 3;
         speed = 4;
 
         try {
@@ -84,16 +89,16 @@ public class Player extends Entity {
 
         if (keyHandler.upPressed) {
             direction = Direction.UP;
-            y -= speed;
+            worldY -= speed;
         } else if (keyHandler.downPressed) {
             direction = Direction.DOWN;
-            y += speed;
+            worldY += speed;
         } else if (keyHandler.leftPressed) {
             direction = Direction.LEFT;
-            x -= speed;
+            worldX -= speed;
         } else if (keyHandler.rightPressed) {
             direction = Direction.RIGHT;
-            x += speed;
+            worldX += speed;
         }
 
         // TODO: Clean up the animation logic, probably needs to be done when we have a lot more possible player states.
@@ -114,7 +119,7 @@ public class Player extends Entity {
             sprite = idle.get(direction);
         }
 
-        g2d.drawImage(sprite, x, y, gamePanel.scaledTileSize, gamePanel.scaledTileSize, null);
+        g2d.drawImage(sprite, screenX, screenY, gamePanel.scaledTileSize, gamePanel.scaledTileSize, null);
     }
 
     public boolean isWalking() {

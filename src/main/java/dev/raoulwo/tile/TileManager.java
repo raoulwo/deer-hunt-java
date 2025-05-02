@@ -1,6 +1,7 @@
 package dev.raoulwo.tile;
 
 import dev.raoulwo.GamePanel;
+import dev.raoulwo.entity.Player;
 import dev.raoulwo.resource.Resource;
 
 import java.awt.*;
@@ -100,15 +101,25 @@ public class TileManager {
     }
 
     public void draw(Graphics2D g2d) {
-        for (int row = 0; row < gamePanel.maxScreenRows; row++) {
-            for (int col = 0; col < gamePanel.maxScreenColumns; col++) {
-                int x = col * gamePanel.scaledTileSize;
-                int y = row * gamePanel.scaledTileSize;
+        for (int row = 0; row < gamePanel.maxWorldRows; row++) {
+            for (int col = 0; col < gamePanel.maxWorldColumns; col++) {
+                int worldX = col * gamePanel.scaledTileSize;
+                int worldY = row * gamePanel.scaledTileSize;
+
+                Player player = gamePanel.player;
+                int screenX = worldX - player.worldX + player.screenX;
+                int screenY = worldY - player.worldY + player.screenY;
 
                 String code = map[row][col];
                 String key = tileCodeToTileName.get(code);
 
-                g2d.drawImage(tiles.get(key).sprite, x, y, gamePanel.scaledTileSize, gamePanel.scaledTileSize, null);
+                // Check if tiles are within screen boundaries before rendering them.
+                if (worldX > player.worldX - player.screenX - gamePanel.scaledTileSize &&
+                    worldX < player.worldX + player.screenX + gamePanel.scaledTileSize &&
+                    worldY > player.worldY - player.screenY - gamePanel.scaledTileSize &&
+                    worldY < player.worldY + player.screenY + gamePanel.scaledTileSize) {
+                    g2d.drawImage(tiles.get(key).sprite, screenX, screenY, gamePanel.scaledTileSize, gamePanel.scaledTileSize, null);
+                }
             }
         }
     }
