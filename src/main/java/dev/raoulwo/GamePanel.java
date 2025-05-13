@@ -1,6 +1,8 @@
 package dev.raoulwo;
 
 import dev.raoulwo.entity.Player;
+import dev.raoulwo.item.Heart;
+import dev.raoulwo.item.Item;
 import dev.raoulwo.tile.TileManager;
 
 import javax.swing.*;
@@ -48,6 +50,8 @@ public class GamePanel extends JPanel implements Runnable {
     public TileManager tileManager = new TileManager(this);
     public CollisionHandler collisionHandler = new CollisionHandler(this);
 
+    public Item item = new Heart(this);
+
     public GamePanel() {
         setPreferredSize(new Dimension(screenWidth, screenHeight));
         setBackground(Color.BLACK);
@@ -55,6 +59,9 @@ public class GamePanel extends JPanel implements Runnable {
         addKeyListener(keyHandler);
         // Allows the game panel to be focused in order to receive keyboard inputs.
         setFocusable(true);
+
+        item.worldX = 23 * scaledTileSize;
+        item.worldY = 23 * scaledTileSize;
     }
 
     /**
@@ -111,6 +118,8 @@ public class GamePanel extends JPanel implements Runnable {
         Graphics2D g2d = (Graphics2D) g;
         // Order of drawing determines which sprites are on top or on bottom.
         tileManager.draw(g2d);
+        // TODO: Hardcoded an item to render.
+        item.draw(g2d);
         player.draw(g2d);
 
         // The graphics object needs to be disposed after use to save some memory.
