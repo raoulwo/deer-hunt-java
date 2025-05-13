@@ -29,6 +29,9 @@ public class Player extends Entity {
     int walkingAnimInterval = 8; // Number of frames for a single walking animation sprite.
 
     PlayerColor color = PlayerColor.GREEN;
+    boolean hasCollidedWithItem = false;
+    boolean moving = false;
+    int pixelCounter = 0;
 
     public Player(GamePanel gamePanel, KeyHandler keyHandler) {
         this.gamePanel = gamePanel;
@@ -38,13 +41,13 @@ public class Player extends Entity {
         screenY = gamePanel.screenHeight / 2 - gamePanel.scaledTileSize / 2;
         worldX = gamePanel.scaledTileSize * 12;
         worldY = gamePanel.scaledTileSize * 10;
-        speed = 8;
+        speed = 4;
 
         collisionBox = new Rectangle();
-        collisionBox.x = 8;
-        collisionBox.y = 16;
-        collisionBox.width = 32;
-        collisionBox.height = 32;
+        collisionBox.x = 1;
+        collisionBox.y = 1;
+        collisionBox.width = gamePanel.scaledTileSize - 2;
+        collisionBox.height = gamePanel.scaledTileSize - 2;
         collisionBoxDefaultX = collisionBox.x;
         collisionBoxDefaultY = collisionBox.y;
 
@@ -91,61 +94,75 @@ public class Player extends Entity {
     }
 
     public void update() {
-        if (!isWalking()) {
-            return;
-        }
-
-        // Update player direction.
-        if (keyHandler.upPressed) {
-            direction = Direction.UP;
-        } else if (keyHandler.downPressed) {
-            direction = Direction.DOWN;
-        } else if (keyHandler.leftPressed) {
-            direction = Direction.LEFT;
-        } else if (keyHandler.rightPressed) {
-            direction = Direction.RIGHT;
-        }
-
-        // Check for collisions with terrain.
-        hasCollided = false;
-        gamePanel.collisionHandler.checkTileCollision(this);
-        boolean collidedWithItem = gamePanel.collisionHandler.checkItemCollision(this, true);
-
-        // Update the player position if no collision.
-        if (!hasCollided) {
-            switch (direction) {
-                case UP:
-                    worldY -= speed;
-                    break;
-                case DOWN:
-                    worldY += speed;
-                    break;
-                case LEFT:
-                    worldX -= speed;
-                    break;
-                case RIGHT:
-                    worldX += speed;
-                    break;
+        // TODO: Tweak tile-based movement since it doesn't feel right yet.
+        if (!moving) {
+            if (moveKeyPressed()) {
+                moving = true;
             }
+
+            // Update player direction.
+            if (keyHandler.upPressed) {
+                direction = Direction.UP;
+            } else if (keyHandler.downPressed) {
+                direction = Direction.DOWN;
+            } else if (keyHandler.leftPressed) {
+                direction = Direction.LEFT;
+            } else if (keyHandler.rightPressed) {
+                direction = Direction.RIGHT;
+            }
+
+            // Check for collisions with terrain.
+            hasCollided = false;
+            gamePanel.collisionHandler.checkTileCollision(this);
+            hasCollidedWithItem = gamePanel.collisionHandler.checkItemCollision(this, true);
+
         }
 
-        if (collidedWithItem) {
-            gamePanel.item.pickedUp = true;
-        }
+        if (moving) {
+            // Update the player position if no collision.
+            if (!hasCollided) {
+                switch (direction) {
+                    case UP:
+                        worldY -= speed;
+                        break;
+                    case DOWN:
+                        worldY += speed;
+                        break;
+                    case LEFT:
+                        worldX -= speed;
+                        break;
+                    case RIGHT:
+                        worldX += speed;
+                        break;
+                }
+            }
 
-        // TODO: Clean up the animation logic, probably needs to be done when we have a lot more possible player states.
-        walkingAnimCounter++;
-        if (walkingAnimCounter >= walkingAnimInterval) {
-            final int WALKING_ANIM_SPRITE_COUNT = 4;
-            walkingAnimIndex = (walkingAnimIndex + 1) % WALKING_ANIM_SPRITE_COUNT;
-            walkingAnimCounter = 0;
+            if (hasCollidedWithItem) {
+                gamePanel.item.pickedUp = true;
+                gamePanel.playSound(gamePanel.audio.healSound);
+            }
+
+            // TODO: Clean up the animation logic, probably needs to be done when we have a lot more possible player states.
+            walkingAnimCounter++;
+            if (walkingAnimCounter >= walkingAnimInterval) {
+                final int WALKING_ANIM_SPRITE_COUNT = 4;
+                walkingAnimIndex = (walkingAnimIndex + 1) % WALKING_ANIM_SPRITE_COUNT;
+                walkingAnimCounter = 0;
+            }
+
+            // Move for a single tile.
+            pixelCounter += speed;
+            if (pixelCounter >= gamePanel.scaledTileSize) {
+                moving = false;
+                pixelCounter = 0;
+            }
         }
     }
 
     public void draw(Graphics2D g2d) {
         // Render the sprite depending on player state: Currently we only differentiate between walking and idle.
         BufferedImage sprite = null;
-        if (isWalking()) {
+        if (moveKeyPressed()) {
             sprite = walking.get(direction).get(walkingAnimIndex);
         } else {
             sprite = idle.get(direction);
@@ -154,7 +171,7 @@ public class Player extends Entity {
         g2d.drawImage(sprite, screenX, screenY, gamePanel.scaledTileSize, gamePanel.scaledTileSize, null);
     }
 
-    public boolean isWalking() {
+    public boolean moveKeyPressed() {
         return keyHandler.upPressed || keyHandler.downPressed || keyHandler.leftPressed || keyHandler.rightPressed;
     }
 }

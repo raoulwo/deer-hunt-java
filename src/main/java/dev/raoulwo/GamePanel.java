@@ -1,5 +1,6 @@
 package dev.raoulwo;
 
+import java.net.URL;
 import dev.raoulwo.entity.Player;
 import dev.raoulwo.item.Heart;
 import dev.raoulwo.item.Item;
@@ -45,6 +46,7 @@ public class GamePanel extends JPanel implements Runnable {
     Thread gameThread;
     // The key handler will listen for user's key inputs.
     KeyHandler keyHandler = new KeyHandler();
+    public AudioManager audio = new AudioManager();
 
     public Player player = new Player(this, keyHandler);
     public TileManager tileManager = new TileManager(this);
@@ -62,6 +64,8 @@ public class GamePanel extends JPanel implements Runnable {
 
         item.worldX = 23 * scaledTileSize;
         item.worldY = 23 * scaledTileSize;
+
+        playMusic(audio.fightMusic);
     }
 
     /**
@@ -126,5 +130,20 @@ public class GamePanel extends JPanel implements Runnable {
 
         // The graphics object needs to be disposed after use to save some memory.
         g2d.dispose();
+    }
+
+    public void playMusic(URL url) {
+        audio.setFile(url);
+        audio.play();
+        audio.loop();
+    }
+
+    public void stopMusic() {
+        audio.stop();
+    }
+
+    public void playSound(URL url) {
+        audio.setFile(url);
+        audio.play();
     }
 }
