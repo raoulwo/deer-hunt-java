@@ -8,6 +8,7 @@ public class Entity {
     }
 
     public int worldX, worldY;
+    public int collisionBoxDefaultX, collisionBoxDefaultY;
     public int speed;
     public Direction direction = Direction.DOWN;
 

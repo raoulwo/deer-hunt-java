@@ -34,6 +34,7 @@ public class CollisionHandler {
         String mapTileCode1, mapTileCode2;
 
         // TODO: Messy collision detection code, can clean that up later if time.
+        // If we instead have tile-based movement, we don't need this collision detection logic anyways.
 
         switch (entity.direction) {
             case UP: {
@@ -87,4 +88,70 @@ public class CollisionHandler {
         }
 
     }
+
+    // TODO: For now, checks whether the player or another entity has collided with an item.
+    // Returns a boolean since we only have a hardcoded item.
+    public boolean checkItemCollision(Entity entity, boolean player) {
+        if (gamePanel.item == null) {
+            return false;
+        }
+        if (gamePanel.item.pickedUp) {
+            return false;
+        }
+
+        boolean collided = false;
+
+        // Update the entities collision box.
+        entity.collisionBox.x += entity.worldX;
+        entity.collisionBox.y += entity.worldY;
+
+        // Update the items collision box.
+        gamePanel.item.collisionBox.x += gamePanel.item.worldX;
+        gamePanel.item.collisionBox.y += gamePanel.item.worldY;
+
+        switch (entity.direction) {
+            case UP: {
+                entity.collisionBox.y -= entity.speed;
+                if (entity.collisionBox.intersects(gamePanel.item.collisionBox)) {
+                    System.out.println("Collision with item: UP");
+                    // TODO: For now, only players can collide with items.
+                    collided = player;
+                }
+                break;
+            }
+            case DOWN: {
+                entity.collisionBox.y += entity.speed;
+                if (entity.collisionBox.intersects(gamePanel.item.collisionBox)) {
+                    System.out.println("Collision with item: DOWN");
+                    collided = player;
+                }
+                break;
+            }
+            case LEFT: {
+                entity.collisionBox.x -= entity.speed;
+                if (entity.collisionBox.intersects(gamePanel.item.collisionBox)) {
+                    System.out.println("Collision with item: LEFT");
+                    collided = player;
+                }
+                break;
+            }
+            case RIGHT: {
+                entity.collisionBox.x += entity.speed;
+                if (entity.collisionBox.intersects(gamePanel.item.collisionBox)) {
+                    System.out.println("Collision with item: RIGHT");
+                    collided = player;
+                }
+                break;
+            }
+        }
+
+        // Reset the updated collision boxes.
+        entity.collisionBox.x = entity.collisionBoxDefaultX;
+        entity.collisionBox.y = entity.collisionBoxDefaultY;
+        gamePanel.item.collisionBox.x = gamePanel.item.collisionBoxDefaultX;
+        gamePanel.item.collisionBox.y = gamePanel.item.collisionBoxDefaultY;
+
+        return collided;
+    }
+
 }

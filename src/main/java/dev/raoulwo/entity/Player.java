@@ -45,6 +45,8 @@ public class Player extends Entity {
         collisionBox.y = 16;
         collisionBox.width = 32;
         collisionBox.height = 32;
+        collisionBoxDefaultX = collisionBox.x;
+        collisionBoxDefaultY = collisionBox.y;
 
         try {
             loadPlayerSprites(color);
@@ -107,6 +109,7 @@ public class Player extends Entity {
         // Check for collisions with terrain.
         hasCollided = false;
         gamePanel.collisionHandler.checkTileCollision(this);
+        boolean collidedWithItem = gamePanel.collisionHandler.checkItemCollision(this, true);
 
         // Update the player position if no collision.
         if (!hasCollided) {
@@ -124,6 +127,10 @@ public class Player extends Entity {
                     worldX += speed;
                     break;
             }
+        }
+
+        if (collidedWithItem) {
+            gamePanel.item.pickedUp = true;
         }
 
         // TODO: Clean up the animation logic, probably needs to be done when we have a lot more possible player states.

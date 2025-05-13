@@ -10,11 +10,16 @@ public class Item {
     public BufferedImage sprite;
     public String name;
     public int worldX, worldY;
+    public Rectangle collisionBox;
+    public int collisionBoxDefaultX = 0;
+    public int collisionBoxDefaultY = 0;
+    public boolean pickedUp = false;
 
     private GamePanel gamePanel;
 
     public Item(GamePanel gamePanel) {
         this.gamePanel = gamePanel;
+        collisionBox = new Rectangle(0, 0, gamePanel.scaledTileSize, gamePanel.scaledTileSize);
     }
 
     public void draw(Graphics2D g2d) {

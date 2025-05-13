@@ -119,7 +119,9 @@ public class GamePanel extends JPanel implements Runnable {
         // Order of drawing determines which sprites are on top or on bottom.
         tileManager.draw(g2d);
         // TODO: Hardcoded an item to render.
-        item.draw(g2d);
+        if (!item.pickedUp) {
+            item.draw(g2d);
+        }
         player.draw(g2d);
 
         // The graphics object needs to be disposed after use to save some memory.
