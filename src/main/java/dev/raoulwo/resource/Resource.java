@@ -1,5 +1,8 @@
 package dev.raoulwo.resource;
 
+import dev.raoulwo.animation.Animation;
+import dev.raoulwo.animation.AnimationSprite;
+
 import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
 import java.io.BufferedReader;
@@ -7,6 +10,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Supports operations for loading resources like sprites and maybe later on sound effects.
@@ -32,15 +36,24 @@ public class Resource {
      * Loads a list of images with shared path prefix and unique names.
      * @param pathPrefix The shared path prefix for the images.
      * @param files The image file names.
-     * @return An `ArrayList<BufferedImage>` holding the image objects.
+     * @return A `List<BufferedImage>` holding the image objects.
      * @throws IOException An exception should the resource stream to an image not successfully open.
      */
-    public static ArrayList<BufferedImage> loadSprites(String pathPrefix, String... files) throws IOException {
+    public static List<BufferedImage> loadSprites(String pathPrefix, String... files) throws IOException {
         ArrayList<BufferedImage> sprites = new ArrayList<>();
         for (String file : files) {
             sprites.add(loadSprite(pathPrefix, file));
         }
         return sprites;
+    }
+
+    public static Animation loadAnimation(int duration, String pathPrefix, String... files) throws IOException {
+        List<BufferedImage> sprites = loadSprites(pathPrefix, files);
+        List<AnimationSprite> animationSprites = sprites
+                .stream()
+                .map(sprite -> new AnimationSprite(sprite, duration))
+                .toList();
+        return new Animation(animationSprites);
     }
 
     public static String[][] loadMap(String pathPrefix, String file) throws IOException {

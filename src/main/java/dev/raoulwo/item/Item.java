@@ -1,7 +1,7 @@
 package dev.raoulwo.item;
 
-import dev.raoulwo.GamePanel;
-import dev.raoulwo.entity.Player;
+import dev.raoulwo.Panel;
+import dev.raoulwo.entity.OldPlayer;
 
 import java.awt.*;
 import java.awt.image.BufferedImage;
@@ -15,15 +15,15 @@ public class Item {
     public int collisionBoxDefaultY = 0;
     public boolean pickedUp = false;
 
-    private GamePanel gamePanel;
+    private Panel gamePanel;
 
-    public Item(GamePanel gamePanel) {
+    public Item(Panel gamePanel) {
         this.gamePanel = gamePanel;
         collisionBox = new Rectangle(0, 0, gamePanel.scaledTileSize, gamePanel.scaledTileSize);
     }
 
     public void draw(Graphics2D g2d) {
-        Player player = gamePanel.player;
+        OldPlayer player = gamePanel.player;
         int screenX = worldX - player.worldX + player.screenX;
         int screenY = worldY - player.worldY + player.screenY;
 

@@ -104,7 +104,7 @@ public class HostPanel extends JPanel implements Runnable {
 
 
         // To render our game, we first need to add our game panel to the window.
-        GamePanel panel = new GamePanel();
+        Panel panel = new Panel();
         window.add(panel);
         // Resize the window to fit the size of its subcomponents. In our case, it'll fit the game panel.
         window.pack();
@@ -112,7 +112,7 @@ public class HostPanel extends JPanel implements Runnable {
         window.setLocationRelativeTo(null);
         window.setVisible(true);
 
-        panel.startGameThread(); //TODO provide a plyer/host variable
+//        panel.startGameThread(); //TODO provide a plyer/host variable
     }
 
 
@@ -120,7 +120,7 @@ public class HostPanel extends JPanel implements Runnable {
         System.out.println("Trying to join a game");
 
         // To render our game, we first need to add our game panel to the window.
-        GamePanel panel = new GamePanel();
+        Panel panel = new Panel();
         window.add(panel);
         // Resize the window to fit the size of its subcomponents. In our case, it'll fit the game panel.
         window.pack();
@@ -128,7 +128,7 @@ public class HostPanel extends JPanel implements Runnable {
         window.setLocationRelativeTo(null);
         window.setVisible(true);
 
-        panel.startGameThread(); //TODO provide a plyer/host variable
+//        panel.startGameThread(); //TODO provide a plyer/host variable
     }
 
 }

@@ -1,7 +1,7 @@
 package dev.raoulwo.tile;
 
-import dev.raoulwo.GamePanel;
-import dev.raoulwo.entity.Player;
+import dev.raoulwo.Panel;
+import dev.raoulwo.entity.OldPlayer;
 import dev.raoulwo.resource.Resource;
 
 import java.awt.*;
@@ -10,7 +10,7 @@ import java.io.IOException;
 import java.util.HashMap;
 
 public class TileManager {
-    GamePanel gamePanel;
+    Panel gamePanel;
 
     // TODO: No encapsulation to be found, have to refactor and clean that up later on.
 
@@ -24,7 +24,7 @@ public class TileManager {
     // Maps the names of all tiles to their corresponding tile objects.
     public HashMap<String, Tile> tiles = new HashMap<>();
 
-    public TileManager(GamePanel gamePanel) {
+    public TileManager(Panel gamePanel) {
         this.gamePanel = gamePanel;
 
         tileCodeToTileName.put("0", "floor_01");
@@ -116,7 +116,7 @@ public class TileManager {
                 int worldX = col * gamePanel.scaledTileSize;
                 int worldY = row * gamePanel.scaledTileSize;
 
-                Player player = gamePanel.player;
+                OldPlayer player = gamePanel.player;
                 int screenX = worldX - player.worldX + player.screenX;
                 int screenY = worldY - player.worldY + player.screenY;
 
