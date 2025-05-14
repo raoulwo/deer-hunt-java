@@ -1,4 +1,4 @@
-package dev.raoulwo;
+package dev.raoulwo.audio;
 
 import javax.sound.sampled.AudioInputStream;
 import javax.sound.sampled.AudioSystem;
@@ -11,9 +11,33 @@ public class AudioManager {
 
     Clip clip;
 
-    public AudioManager() {
+    private static AudioManager INSTANCE;
+
+    private AudioManager() {
         healSound = getClass().getResource("/audio/sfx/heal.wav");
         fightMusic = getClass().getResource("/audio/music/fight.wav");
+    }
+
+    public static AudioManager instance() {
+        if (INSTANCE == null) {
+            INSTANCE = new AudioManager();
+        }
+        return INSTANCE;
+    }
+
+    public void playMusic(URL url) {
+        setFile(url);
+        play();
+        loop();
+    }
+
+    public void stopMusic() {
+        stop();
+    }
+
+    public void playSound(URL url) {
+        setFile(url);
+        play();
     }
 
     public void setFile(URL url) {

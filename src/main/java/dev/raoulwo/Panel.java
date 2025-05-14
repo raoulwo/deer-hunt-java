@@ -1,6 +1,8 @@
 package dev.raoulwo;
 
 import java.net.URL;
+
+import dev.raoulwo.audio.AudioManager;
 import dev.raoulwo.graphics.DrawFn;
 import dev.raoulwo.input.InputManager;
 import dev.raoulwo.tile.TileManager;
@@ -18,7 +20,7 @@ public class Panel extends JPanel {
     private final DrawFn drawFn;
 
     // TODO: Clean these up
-    public AudioManager audio = new AudioManager();
+    public AudioManager audio = AudioManager.instance();
     public TileManager tileManager = new TileManager(this);
 //    public Item item = new Heart(this);
 
@@ -61,22 +63,6 @@ public class Panel extends JPanel {
 
         // The graphics object needs to be disposed after use to save some memory.
         g2d.dispose();
-    }
-
-    // TODO: Move the music logic out of this class.
-    public void playMusic(URL url) {
-        audio.setFile(url);
-        audio.play();
-        audio.loop();
-    }
-
-    public void stopMusic() {
-        audio.stop();
-    }
-
-    public void playSound(URL url) {
-        audio.setFile(url);
-        audio.play();
     }
 
 }

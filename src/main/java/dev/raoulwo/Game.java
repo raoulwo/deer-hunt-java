@@ -1,9 +1,11 @@
 package dev.raoulwo;
 
+import dev.raoulwo.audio.AudioManager;
 import dev.raoulwo.entity.Entity;
 import dev.raoulwo.entity.Player;
 import dev.raoulwo.graphics.Graphics;
 import dev.raoulwo.resource.Resource;
+import dev.raoulwo.tile.Obstacle;
 import dev.raoulwo.tile.Tile;
 import dev.raoulwo.tile.TileCoordinate;
 import dev.raoulwo.util.PixelCoordinate;
@@ -23,6 +25,8 @@ public class Game implements Runnable {
 
     private final Entity player = Entity.createPlayer(Player.GREEN.name().toLowerCase());
 
+    private final AudioManager audio = AudioManager.instance();
+
     public Game() {
         // We pass the draw method as a callback to the window.
         this.window = new Window(this::draw, new WindowOptions());
@@ -37,6 +41,7 @@ public class Game implements Runnable {
      */
     public void start() {
         thread.start();
+        audio.playMusic(audio.fightMusic);
     }
 
     /**
@@ -82,12 +87,18 @@ public class Game implements Runnable {
         for (int row = 0; row < World.MAX_LEVEL_ROWS; row++) {
             for (int col = 0; col < World.MAX_LEVEL_COLUMNS; col++) {
                 g.drawTile(world.floor[col][row].sprite, col, row);
-                Tile obstacle = world.obstacles[col][row];
+            }
+        }
+
+        for (int row = 0; row < World.MAX_LEVEL_ROWS; row++) {
+            for (int col = 0; col < World.MAX_LEVEL_COLUMNS; col++) {
+                Obstacle obstacle = world.obstacles[col][row];
                 if (obstacle != null) {
-                    g.drawTile(obstacle.sprite, col, row);
+                    g.drawObstacle(obstacle, col, row);
                 }
             }
         }
+
         player.graphics.draw(player, g);
 
     }

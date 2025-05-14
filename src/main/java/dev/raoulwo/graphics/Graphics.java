@@ -1,5 +1,6 @@
 package dev.raoulwo.graphics;
 
+import dev.raoulwo.tile.Obstacle;
 import dev.raoulwo.tile.Tile;
 import dev.raoulwo.util.PixelCoordinate;
 
@@ -35,6 +36,13 @@ public class Graphics {
 
     public void drawSprite(BufferedImage image, int x, int y) {
         g.drawImage(image, x, y, Graphics.SCALED_TILE_SIZE, Graphics.SCALED_TILE_SIZE, null);
+    }
+
+    public void drawObstacle(Obstacle obstacle, int x, int y) {
+        if (x == obstacle.coordinate.x() && y == obstacle.coordinate.y()) {
+            PixelCoordinate pixel = Tile.tileToPixelCoordinate(x, y);
+            g.drawImage(obstacle.tile.sprite, pixel.x(), pixel.y(), obstacle.width * SCALED_TILE_SIZE, obstacle.height * SCALED_TILE_SIZE, null);
+        }
     }
 
     public void drawRect(Color color, int x, int y, int width, int height) {

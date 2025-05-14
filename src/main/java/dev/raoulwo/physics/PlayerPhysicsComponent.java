@@ -3,6 +3,7 @@ package dev.raoulwo.physics;
 import dev.raoulwo.World;
 import dev.raoulwo.entity.Entity;
 import dev.raoulwo.graphics.Graphics;
+import dev.raoulwo.tile.Obstacle;
 import dev.raoulwo.tile.Tile;
 import dev.raoulwo.tile.TileCoordinate;
 
@@ -26,12 +27,12 @@ public class PlayerPhysicsComponent implements PhysicsComponent {
             return;
         }
 
-        TileCoordinate tile = Tile.pixelToTileCoordinate(entity.x, entity.y);
-        Tile obstacle = switch (entity.direction) {
-            case UP -> world.obstacles[tile.x()][Math.max(tile.y() - 1, 0)];
-            case DOWN -> world.obstacles[tile.x()][Math.min(tile.y() + 1, World.MAX_LEVEL_ROWS - 1)];
-            case LEFT -> world.obstacles[Math.max(tile.x() - 1, 0)][tile.y()];
-            case RIGHT -> world.obstacles[Math.min(tile.x() + 1, World.MAX_LEVEL_COLUMNS - 1)][tile.y()];
+        TileCoordinate tileCoordinate = Tile.pixelToTileCoordinate(entity.x, entity.y);
+        Obstacle obstacle = switch (entity.direction) {
+            case UP -> world.obstacles[tileCoordinate.x()][Math.max(tileCoordinate.y() - 1, 0)];
+            case DOWN -> world.obstacles[tileCoordinate.x()][Math.min(tileCoordinate.y() + 1, World.MAX_LEVEL_ROWS - 1)];
+            case LEFT -> world.obstacles[Math.max(tileCoordinate.x() - 1, 0)][tileCoordinate.y()];
+            case RIGHT -> world.obstacles[Math.min(tileCoordinate.x() + 1, World.MAX_LEVEL_COLUMNS - 1)][tileCoordinate.y()];
         };
 
         switch (entity.direction) {
@@ -41,7 +42,7 @@ public class PlayerPhysicsComponent implements PhysicsComponent {
                     break;
                 }
                 entity.y -= speed;
-                var coordinate = Tile.tileToPixelCoordinate(0, tile.y());
+                var coordinate = Tile.tileToPixelCoordinate(0, tileCoordinate.y());
                 if (obstacle != null && entity.y < coordinate.y()) {
                     entity.y = coordinate.y();
                 }
@@ -53,7 +54,7 @@ public class PlayerPhysicsComponent implements PhysicsComponent {
                     break;
                 }
                 entity.y += speed;
-                var coordinate = Tile.tileToPixelCoordinate(0, tile.y());
+                var coordinate = Tile.tileToPixelCoordinate(0, tileCoordinate.y());
                 if (obstacle != null && entity.y > coordinate.y()) {
                     entity.y = coordinate.y();
                 }
@@ -64,7 +65,7 @@ public class PlayerPhysicsComponent implements PhysicsComponent {
                     break;
                 }
                 entity.x -= speed;
-                var coordinate = Tile.tileToPixelCoordinate(tile.x(), 0);
+                var coordinate = Tile.tileToPixelCoordinate(tileCoordinate.x(), 0);
                 if (obstacle != null && entity.x < coordinate.x()) {
                     entity.x = coordinate.x();
                 }
@@ -76,7 +77,7 @@ public class PlayerPhysicsComponent implements PhysicsComponent {
                     break;
                 }
                 entity.x += speed;
-                var coordinate = Tile.tileToPixelCoordinate(tile.x(), 0);
+                var coordinate = Tile.tileToPixelCoordinate(tileCoordinate.x(), 0);
                 if (obstacle != null && entity.x > coordinate.x()) {
                     entity.x = coordinate.x();
                 }
