@@ -18,8 +18,8 @@ public class OldPlayer extends OldEntity {
     Panel gamePanel;
     InputManager keyHandler;
 
-    public final int screenX;
-    public final int screenY;
+//    public final int screenX;
+//    public final int screenY;
 
 //    HashMap<Direction, BufferedImage> idle = new HashMap<>();
 //    HashMap<Direction, List<BufferedImage>> walking = new HashMap<>();
@@ -37,19 +37,19 @@ public class OldPlayer extends OldEntity {
         this.gamePanel = gamePanel;
         this.keyHandler = keyHandler;
 
-        screenX = gamePanel.screenWidth / 2 - gamePanel.scaledTileSize / 2;
-        screenY = gamePanel.screenHeight / 2 - gamePanel.scaledTileSize / 2;
-        worldX = gamePanel.scaledTileSize * 12;
-        worldY = gamePanel.scaledTileSize * 10;
-        speed = 4;
+//        screenX = gamePanel.screenWidth / 2 - gamePanel.scaledTileSize / 2;
+//        screenY = gamePanel.screenHeight / 2 - gamePanel.scaledTileSize / 2;
+//        worldX = gamePanel.scaledTileSize * 12;
+//        worldY = gamePanel.scaledTileSize * 10;
+//        speed = 4;
 
-        collisionBox = new Rectangle();
-        collisionBox.x = 1;
-        collisionBox.y = 1;
-        collisionBox.width = gamePanel.scaledTileSize - 2;
-        collisionBox.height = gamePanel.scaledTileSize - 2;
-        collisionBoxDefaultX = collisionBox.x;
-        collisionBoxDefaultY = collisionBox.y;
+//        collisionBox = new Rectangle();
+//        collisionBox.x = 1;
+//        collisionBox.y = 1;
+//        collisionBox.width = gamePanel.scaledTileSize - 2;
+//        collisionBox.height = gamePanel.scaledTileSize - 2;
+//        collisionBoxDefaultX = collisionBox.x;
+//        collisionBoxDefaultY = collisionBox.y;
 
         try {
             loadPlayerSprites(color);

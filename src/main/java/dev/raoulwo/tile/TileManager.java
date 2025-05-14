@@ -111,26 +111,26 @@ public class TileManager {
     }
 
     public void draw(Graphics2D g2d) {
-        for (int row = 0; row < gamePanel.maxWorldRows; row++) {
-            for (int col = 0; col < gamePanel.maxWorldColumns; col++) {
-                int worldX = col * gamePanel.scaledTileSize;
-                int worldY = row * gamePanel.scaledTileSize;
-
-                OldPlayer player = gamePanel.player;
-                int screenX = worldX - player.worldX + player.screenX;
-                int screenY = worldY - player.worldY + player.screenY;
-
-                String code = map[row][col];
-                String key = tileCodeToTileName.get(code);
-
-                // Check if tiles are within screen boundaries before rendering them.
-                if (worldX > player.worldX - player.screenX - gamePanel.scaledTileSize &&
-                    worldX < player.worldX + player.screenX + gamePanel.scaledTileSize &&
-                    worldY > player.worldY - player.screenY - gamePanel.scaledTileSize &&
-                    worldY < player.worldY + player.screenY + gamePanel.scaledTileSize) {
-                    g2d.drawImage(tiles.get(key).sprite, screenX, screenY, gamePanel.scaledTileSize, gamePanel.scaledTileSize, null);
-                }
-            }
-        }
+//        for (int row = 0; row < gamePanel.maxWorldRows; row++) {
+//            for (int col = 0; col < gamePanel.maxWorldColumns; col++) {
+//                int worldX = col * gamePanel.scaledTileSize;
+//                int worldY = row * gamePanel.scaledTileSize;
+//
+//                OldPlayer player = gamePanel.player;
+//                int screenX = worldX - player.worldX + player.screenX;
+//                int screenY = worldY - player.worldY + player.screenY;
+//
+//                String code = map[row][col];
+//                String key = tileCodeToTileName.get(code);
+//
+//                // Check if tiles are within screen boundaries before rendering them.
+//                if (worldX > player.worldX - player.screenX - gamePanel.scaledTileSize &&
+//                    worldX < player.worldX + player.screenX + gamePanel.scaledTileSize &&
+//                    worldY > player.worldY - player.screenY - gamePanel.scaledTileSize &&
+//                    worldY < player.worldY + player.screenY + gamePanel.scaledTileSize) {
+//                    g2d.drawImage(tiles.get(key).sprite, screenX, screenY, gamePanel.scaledTileSize, gamePanel.scaledTileSize, null);
+//                }
+//            }
+//        }
     }
 }

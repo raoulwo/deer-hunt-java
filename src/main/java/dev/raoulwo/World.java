@@ -6,15 +6,15 @@ import dev.raoulwo.tile.Tile;
 import java.awt.image.BufferedImage;
 
 public class World {
-    public static final int MAX_LEVEL_COLUMNS = 100;
-    public static final int MAX_LEVEL_ROWS = 100;
+    public static final int MAX_LEVEL_COLUMNS = 20;
+    public static final int MAX_LEVEL_ROWS = 16;
 
     public Tile[][] floor = new Tile[MAX_LEVEL_COLUMNS][MAX_LEVEL_ROWS];
     public Tile[][] obstacles = new Tile[MAX_LEVEL_COLUMNS][MAX_LEVEL_ROWS];
 
     World() {
         try {
-            BufferedImage floorSprite = Resource.loadSprite("/sprites/tiles/floor/", "floor_01.png");
+            BufferedImage floorSprite = Resource.loadSprite("/sprites/tiles/floor/", "floor_12.png");
             Tile floorTile = new Tile(floorSprite);
 
             BufferedImage obstacleSprite = Resource.loadSprite("/sprites/tiles/obstacles/", "rock_01.png");

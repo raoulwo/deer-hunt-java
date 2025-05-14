@@ -5,6 +5,7 @@ import dev.raoulwo.entity.Direction;
 import dev.raoulwo.entity.Entity;
 import dev.raoulwo.resource.Resource;
 
+import java.awt.*;
 import java.io.IOException;
 import java.util.HashMap;
 
@@ -129,6 +130,7 @@ public class PlayerGraphicsComponent implements GraphicsComponent {
         switch (entity.state) {
             case IDLE -> idle(entity, g);
             case WALK -> walk(entity, g);
+            case ATTACK -> attack(entity, g);
         }
     }
 
@@ -140,5 +142,10 @@ public class PlayerGraphicsComponent implements GraphicsComponent {
     private void walk(Entity entity, Graphics g) {
         Animation walk = walkAnimations.get(entity.direction);
         walk.play(entity, g);
+    }
+
+    private void attack(Entity entity, Graphics g) {
+        Animation attack = attackAnimations.get(entity.direction);
+        attack.play(entity, g);
     }
 }

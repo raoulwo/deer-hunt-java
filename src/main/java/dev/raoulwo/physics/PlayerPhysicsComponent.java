@@ -8,7 +8,9 @@ import dev.raoulwo.tile.TileCoordinate;
 
 public class PlayerPhysicsComponent implements PhysicsComponent {
 
-    private int speed = 3;
+    // NOTE: The tile size should be evenly divisible by the player speed, else the player coordinates
+    // get messed up and the subsequent bounds checks don't work!
+    private int speed = 4;
     private int pixelsMoved = 0;
 
     @Override
@@ -26,37 +28,55 @@ public class PlayerPhysicsComponent implements PhysicsComponent {
 
         TileCoordinate tile = Tile.pixelToTileCoordinate(entity.x, entity.y);
         Tile obstacle = switch (entity.direction) {
-            case UP -> world.obstacles[tile.x()][tile.y() - 1];
-            case DOWN -> world.obstacles[tile.x()][tile.y() + 1];
-            case LEFT -> world.obstacles[tile.x() - 1][tile.y()];
-            case RIGHT -> world.obstacles[tile.x() + 1][tile.y()];
+            case UP -> world.obstacles[tile.x()][Math.max(tile.y() - 1, 0)];
+            case DOWN -> world.obstacles[tile.x()][Math.min(tile.y() + 1, World.MAX_LEVEL_ROWS - 1)];
+            case LEFT -> world.obstacles[Math.max(tile.x() - 1, 0)][tile.y()];
+            case RIGHT -> world.obstacles[Math.min(tile.x() + 1, World.MAX_LEVEL_COLUMNS - 1)][tile.y()];
         };
 
         switch (entity.direction) {
             case UP -> {
-                var coordinate = Tile.tileToPixelCoordinate(0, tile.y());
+                if (entity.y <= 0) {
+                    entity.y = 0;
+                    break;
+                }
                 entity.y -= speed;
+                var coordinate = Tile.tileToPixelCoordinate(0, tile.y());
                 if (obstacle != null && entity.y < coordinate.y()) {
                     entity.y = coordinate.y();
                 }
             }
             case DOWN -> {
-                var coordinate = Tile.tileToPixelCoordinate(0, tile.y());
+                int bound = (World.MAX_LEVEL_ROWS - 1) * Graphics.SCALED_TILE_SIZE;
+                if (entity.y >= bound) {
+                    entity.y = bound;
+                    break;
+                }
                 entity.y += speed;
+                var coordinate = Tile.tileToPixelCoordinate(0, tile.y());
                 if (obstacle != null && entity.y > coordinate.y()) {
                     entity.y = coordinate.y();
                 }
             }
             case LEFT -> {
-                var coordinate = Tile.tileToPixelCoordinate(tile.x(), 0);
+                if (entity.x <= 0) {
+                    entity.x = 0;
+                    break;
+                }
                 entity.x -= speed;
+                var coordinate = Tile.tileToPixelCoordinate(tile.x(), 0);
                 if (obstacle != null && entity.x < coordinate.x()) {
                     entity.x = coordinate.x();
                 }
             }
             case RIGHT -> {
-                var coordinate = Tile.tileToPixelCoordinate(tile.x(), 0);
+                int bound = (World.MAX_LEVEL_COLUMNS - 1) * Graphics.SCALED_TILE_SIZE;
+                if (entity.x >= bound) {
+                    entity.x = bound;
+                    break;
+                }
                 entity.x += speed;
+                var coordinate = Tile.tileToPixelCoordinate(tile.x(), 0);
                 if (obstacle != null && entity.x > coordinate.x()) {
                     entity.x = coordinate.x();
                 }

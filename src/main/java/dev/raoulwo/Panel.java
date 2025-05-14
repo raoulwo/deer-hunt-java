@@ -1,12 +1,8 @@
 package dev.raoulwo;
 
 import java.net.URL;
-import dev.raoulwo.entity.OldPlayer;
 import dev.raoulwo.graphics.DrawFn;
 import dev.raoulwo.input.InputManager;
-import dev.raoulwo.item.Heart;
-import dev.raoulwo.item.Item;
-//import dev.raoulwo.physics.CollisionHandler;
 import dev.raoulwo.tile.TileManager;
 
 import javax.swing.*;
@@ -24,7 +20,7 @@ public class Panel extends JPanel {
     // TODO: Clean these up
     public AudioManager audio = new AudioManager();
     public TileManager tileManager = new TileManager(this);
-    public Item item = new Heart(this);
+//    public Item item = new Heart(this);
 
     // TODO: Created this constructor just to make the host panel compile.
     public Panel() {
@@ -45,6 +41,8 @@ public class Panel extends JPanel {
         setDoubleBuffered(true);
         // Allows the game panel to be focused in order to receive keyboard inputs.
         setFocusable(true);
+
+        addKeyListener(InputManager.instance());
 
 //        playMusic(audio.fightMusic);
     }

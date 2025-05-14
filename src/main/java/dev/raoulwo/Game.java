@@ -27,7 +27,7 @@ public class Game implements Runnable {
         // We pass the draw method as a callback to the window.
         this.window = new Window(this::draw, new WindowOptions());
 
-        PixelCoordinate pixel = Tile.tileToPixelCoordinate(15, 8);
+        PixelCoordinate pixel = Tile.tileToPixelCoordinate(0, 0);
         player.x = pixel.x();
         player.y = pixel.y();
     }
@@ -89,6 +89,7 @@ public class Game implements Runnable {
             }
         }
         player.graphics.draw(player, g);
+
     }
 
 }

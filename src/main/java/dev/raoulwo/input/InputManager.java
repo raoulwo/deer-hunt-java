@@ -7,7 +7,7 @@ import java.awt.event.KeyListener;
  * A singleton class that manages user input.
  */
 public class InputManager implements KeyListener {
-    public boolean upPressed, downPressed, leftPressed, rightPressed;
+    public boolean upPressed, downPressed, leftPressed, rightPressed, spacePressed;
 
     private static InputManager INSTANCE;
 
@@ -39,6 +39,9 @@ public class InputManager implements KeyListener {
         if (keyCode == KeyEvent.VK_D) {
             rightPressed = true;
         }
+        if (keyCode == KeyEvent.VK_SPACE) {
+            spacePressed = true;
+        }
     }
 
     @Override
@@ -56,6 +59,9 @@ public class InputManager implements KeyListener {
         }
         if (keyCode == KeyEvent.VK_D) {
             rightPressed = false;
+        }
+        if (keyCode == KeyEvent.VK_SPACE) {
+            spacePressed = false;
         }
     }
 

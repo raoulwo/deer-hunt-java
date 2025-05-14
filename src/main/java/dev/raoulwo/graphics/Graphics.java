@@ -36,6 +36,11 @@ public class Graphics {
     public void drawSprite(BufferedImage image, int x, int y) {
         g.drawImage(image, x, y, Graphics.SCALED_TILE_SIZE, Graphics.SCALED_TILE_SIZE, null);
     }
+
+    public void drawRect(Color color, int x, int y, int width, int height) {
+        g.setColor(color);
+        g.drawRect( x, y, width, height);
+    }
 }
 
 // TODO: Move this to a game world class.
