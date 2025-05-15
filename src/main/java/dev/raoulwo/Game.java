@@ -4,6 +4,7 @@ import dev.raoulwo.audio.AudioManager;
 import dev.raoulwo.entity.Direction;
 import dev.raoulwo.entity.Entity;
 import dev.raoulwo.entity.Player;
+import dev.raoulwo.entity.State;
 import dev.raoulwo.graphics.Graphics;
 import dev.raoulwo.tile.Obstacle;
 import dev.raoulwo.tile.Tile;
@@ -31,6 +32,7 @@ public class Game implements Runnable {
         Entity player = Entity.createPlayer(Player.GREEN.name().toLowerCase());
         player.x = playerPosition.x();
         player.y = playerPosition.y();
+        player.direction = Direction.LEFT;
         world.entities.put(player.name, player);
 
         PixelCoordinate nonPlayerPosition = Tile.tileToPixelCoordinate(10, 10);
@@ -39,7 +41,15 @@ public class Game implements Runnable {
         npc.y = nonPlayerPosition.y();
         world.entities.put(npc.name, npc);
 
-        Entity projectile1 = Entity.createProjectile("projectile1", new TileCoordinate(5, 14), Direction.LEFT);
+        PixelCoordinate nonPlayerPosition2 = Tile.tileToPixelCoordinate(15, 15);
+        Entity npc2 = Entity.createNonPlayer(Player.BLUE.name().toLowerCase());
+        npc2.x = nonPlayerPosition2.x();
+        npc2.y = nonPlayerPosition2.y();
+        world.entities.put(npc2.name, npc2);
+
+
+//        Entity projectile1 = Entity.createProjectile("projectile1", new TileCoordinate(5, 14), Direction.LEFT);
+        Entity projectile1 = Entity.createProjectile("projectile1", new TileCoordinate(5, 14), Direction.RIGHT);
         world.entities.put(projectile1.name, projectile1);
 
         Entity projectile2 = Entity.createProjectile("projectile2", new TileCoordinate(10, 0), Direction.DOWN);

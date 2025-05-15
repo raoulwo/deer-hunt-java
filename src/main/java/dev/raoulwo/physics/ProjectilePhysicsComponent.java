@@ -101,6 +101,13 @@ public class ProjectilePhysicsComponent implements PhysicsComponent {
         }
     }
 
+    @Override
+    public void onHit(World world, Entity entity, Entity other) {
+        if (other.name.contains("projectile")) {
+            world.removeEntity(entity);
+        }
+    }
+
     private void onBoundHit(World world, Entity entity) {
         world.removeEntity(entity);
     }
@@ -110,7 +117,7 @@ public class ProjectilePhysicsComponent implements PhysicsComponent {
     }
 
     private void onEntityHit(World world, Entity entity, Entity other) {
+        other.physics.onHit(world, other, entity);
         world.removeEntity(entity);
-        // TODO: Trigger a hit on the other entity.
     }
 }

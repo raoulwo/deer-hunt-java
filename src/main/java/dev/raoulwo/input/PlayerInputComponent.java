@@ -4,7 +4,6 @@ import dev.raoulwo.entity.Direction;
 import dev.raoulwo.entity.Entity;
 import dev.raoulwo.entity.State;
 
-import static dev.raoulwo.entity.State.IDLE;
 
 public class PlayerInputComponent implements InputComponent {
     private InputManager input = InputManager.instance();
@@ -15,19 +14,36 @@ public class PlayerInputComponent implements InputComponent {
     private final static int ATTACK_STATE_DURATION = 30;
     private final static int ATTACK_STATE_COOLDOWN = 30;
 
+    private final static int ATTACKED_STATE_DURATION = 30;
+    // Invulnerability period after getting hit by a projectile.
+    private final static int ATTACKED_STATE_COOLDOWN = 30;
+
     private int moveCounter = 0;
     private int attackDurationCounter = 0;
-    private int attackCooldownCounter = 30;
+    private int attackCooldownCounter = ATTACK_STATE_COOLDOWN;
+    private int attackedDurationCounter = 0;
+    private int attackedCooldownCounter = ATTACKED_STATE_COOLDOWN;
 
     @Override
     public void update(Entity entity) {
+        if (entity.state == State.ATTACKED) {
+            attackedDurationCounter++;
+            if (attackedDurationCounter >= ATTACKED_STATE_DURATION) {
+                entity.state = State.IDLE;
+                entity.moving = false;
+                attackedDurationCounter = 0;
+            } else {
+                return;
+            }
+        }
+
         if (entity.moving) return;
 
         if (entity.state == State.ATTACK) {
             entity.attacking = true;
             attackDurationCounter++;
             if (attackDurationCounter >= ATTACK_STATE_DURATION) {
-                entity.state = IDLE;
+                entity.state = State.IDLE;
                 entity.attacking = false;
                 attackDurationCounter = 0;
             } {
@@ -45,7 +61,7 @@ public class PlayerInputComponent implements InputComponent {
             }
         }
         if (!input.moveKeyPressed()) {
-            entity.state = IDLE;
+            entity.state = State.IDLE;
             return;
         }
 

@@ -131,6 +131,7 @@ public class PlayerGraphicsComponent implements GraphicsComponent {
             case IDLE -> idle(entity, g);
             case WALK -> walk(entity, g);
             case ATTACK -> attack(entity, g);
+            case ATTACKED -> attacked(entity, g);
         }
     }
 
@@ -147,6 +148,11 @@ public class PlayerGraphicsComponent implements GraphicsComponent {
     private void attack(Entity entity, Graphics g) {
         Animation attack = attackAnimations.get(entity.direction);
         attack.play(entity, g);
+    }
+
+    private void attacked(Entity entity, Graphics g) {
+        Animation attacked = deadAnimation;
+        attacked.play(entity, g);
     }
 }
 

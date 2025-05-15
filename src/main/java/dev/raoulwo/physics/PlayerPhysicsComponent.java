@@ -2,6 +2,7 @@ package dev.raoulwo.physics;
 
 import dev.raoulwo.World;
 import dev.raoulwo.entity.Entity;
+import dev.raoulwo.entity.State;
 import dev.raoulwo.graphics.Graphics;
 import dev.raoulwo.tile.Obstacle;
 import dev.raoulwo.tile.Tile;
@@ -21,6 +22,11 @@ public class PlayerPhysicsComponent implements PhysicsComponent {
             case WALK -> walk(world, entity);
             case ATTACK -> attack(world, entity);
         }
+    }
+
+    @Override
+    public void onHit(World world, Entity entity, Entity other) {
+        entity.state = State.ATTACKED;
     }
 
     private void walk(World world, Entity entity) {
