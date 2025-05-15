@@ -28,6 +28,7 @@ public class Entity {
     public Direction direction = Direction.DOWN;
     public State state = State.IDLE;
     public boolean moving = false;
+    public boolean attacking = false;
 
     public Entity(String name, InputComponent input, PhysicsComponent physics, GraphicsComponent graphics) {
         this.name = name;

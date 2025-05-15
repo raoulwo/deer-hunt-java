@@ -24,9 +24,11 @@ public class PlayerInputComponent implements InputComponent {
         if (entity.moving) return;
 
         if (entity.state == State.ATTACK) {
+            entity.attacking = true;
             attackDurationCounter++;
             if (attackDurationCounter >= ATTACK_STATE_DURATION) {
                 entity.state = IDLE;
+                entity.attacking = false;
                 attackDurationCounter = 0;
             } {
                 return;

@@ -19,6 +19,7 @@ public class PlayerPhysicsComponent implements PhysicsComponent {
         switch (entity.state) {
             case IDLE -> idle(world,entity);
             case WALK -> walk(world, entity);
+            case ATTACK -> attack(world, entity);
         }
     }
 
@@ -110,6 +111,31 @@ public class PlayerPhysicsComponent implements PhysicsComponent {
     }
 
     private void idle(World world, Entity entity) {
+    }
+
+    private void attack(World world, Entity entity) {
+        if (entity.attacking) {
+            return;
+        }
+
+        TileCoordinate playerPosition = Tile.pixelToTileCoordinate(entity.x, entity.y);
+        TileCoordinate projectilePosition = switch (entity.direction) {
+            case UP -> new TileCoordinate(playerPosition.x(), playerPosition.y() - 1);
+            case DOWN -> new TileCoordinate(playerPosition.x(), playerPosition.y() + 1);
+            case LEFT -> new TileCoordinate(playerPosition.x() - 1, playerPosition.y());
+            case RIGHT -> new TileCoordinate(playerPosition.x() + 1, playerPosition.y());
+        };
+
+        if (projectilePosition.y() < 0 || projectilePosition.y() >= World.MAX_LEVEL_ROWS) {
+            return;
+        }
+
+        if (projectilePosition.x() < 0 || projectilePosition.x() >= World.MAX_LEVEL_COLUMNS) {
+            return;
+        }
+
+        Entity projectile = Entity.createProjectile("projectile_" + System.currentTimeMillis(), projectilePosition, entity.direction);
+        world.entities.put(projectile.name, projectile);
     }
 }
 
