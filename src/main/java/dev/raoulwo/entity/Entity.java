@@ -1,6 +1,7 @@
 package dev.raoulwo.entity;
 
 import dev.raoulwo.World;
+import dev.raoulwo.graphics.Graphics;
 import dev.raoulwo.graphics.GraphicsComponent;
 import dev.raoulwo.graphics.PlayerGraphicsComponent;
 import dev.raoulwo.graphics.ProjectileGraphicsComponent;
@@ -20,6 +21,9 @@ public class Entity {
     public String name;
     // The world pixel coordinates of the entity.
     public int x, y;
+
+    public int screenX = Graphics.TARGET_RESOLUTION_WIDTH * Graphics.SCALE / 2 - Graphics.SCALED_TILE_SIZE / 2;
+    public int screenY = Graphics.TARGET_RESOLUTION_HEIGHT * Graphics.SCALE / 2 - Graphics.SCALED_TILE_SIZE / 2;
 
     public InputComponent input;
     public PhysicsComponent physics;
@@ -41,14 +45,21 @@ public class Entity {
         return new Entity(name,
                 new PlayerInputComponent(),
                 new PlayerPhysicsComponent(),
-                new PlayerGraphicsComponent(name));
+                new PlayerGraphicsComponent(name, false));
+    }
+
+    public static Entity createPlayer(String name, boolean centerCamera) {
+        return new Entity(name,
+                new PlayerInputComponent(),
+                new PlayerPhysicsComponent(),
+                new PlayerGraphicsComponent(name, centerCamera));
     }
 
     public static Entity createNonPlayer(String name) {
         return new Entity(name,
                 new NonPlayerInputComponent(),
                 new PlayerPhysicsComponent(),
-                new PlayerGraphicsComponent(name));
+                new PlayerGraphicsComponent(name, false));
     }
 
     public static Entity createProjectile(String name, TileCoordinate position, Direction direction) {

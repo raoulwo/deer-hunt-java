@@ -21,7 +21,12 @@ public class PlayerGraphicsComponent implements GraphicsComponent {
     private final HashMap<Direction, Animation> walkAnimations = new HashMap<>();
     private Animation deadAnimation;
 
-    public PlayerGraphicsComponent(String name) {
+    private final Camera camera = Camera.instance();
+
+    private boolean centerCamera;
+
+    public PlayerGraphicsComponent(String name, boolean centerCamera) {
+        this.centerCamera = centerCamera;
         try {
             initializeAnimations(name);
         } catch (IOException e) {
@@ -127,6 +132,13 @@ public class PlayerGraphicsComponent implements GraphicsComponent {
 
     @Override
     public void draw(Entity entity, Graphics g) {
+        if (!centerCamera) {
+            entity.screenX = entity.x - camera.x + Camera.SCREEN_X;
+            entity.screenY = entity.y - camera.y + Camera.SCREEN_Y;
+        } else {
+            camera.centerOn(entity.x, entity.y);
+        }
+
         switch (entity.state) {
             case IDLE -> idle(entity, g);
             case WALK -> walk(entity, g);

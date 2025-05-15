@@ -11,6 +11,8 @@ public class ProjectileGraphicsComponent implements GraphicsComponent {
 
     private HashMap<Direction, BufferedImage> sprites = new HashMap<>();
 
+    private static final Camera camera = Camera.instance();
+
     public ProjectileGraphicsComponent() {
         try {
             // TODO: Hardcoded some sprites for now.
@@ -29,6 +31,8 @@ public class ProjectileGraphicsComponent implements GraphicsComponent {
 
     @Override
     public void draw(Entity entity, Graphics g) {
+        entity.screenX = entity.x - camera.x + Camera.SCREEN_X;
+        entity.screenY = entity.y - camera.y + Camera.SCREEN_Y;
         g.drawSprite(sprites.get(entity.direction), entity.x, entity.y);
     }
 }

@@ -5,6 +5,7 @@ import dev.raoulwo.entity.Direction;
 import dev.raoulwo.entity.Entity;
 import dev.raoulwo.entity.Player;
 import dev.raoulwo.entity.State;
+import dev.raoulwo.graphics.Camera;
 import dev.raoulwo.graphics.Graphics;
 import dev.raoulwo.tile.Obstacle;
 import dev.raoulwo.tile.Tile;
@@ -28,20 +29,20 @@ public class Game implements Runnable {
         // We pass the draw method as a callback to the window.
         this.window = new Window(this::draw, new WindowOptions());
 
-        PixelCoordinate playerPosition = Tile.tileToPixelCoordinate(10, 14);
-        Entity player = Entity.createPlayer(Player.GREEN.name().toLowerCase());
+        PixelCoordinate playerPosition = Tile.tileToPixelCoordinate(18, 14);
+        Entity player = Entity.createPlayer(Player.GREEN.name().toLowerCase(), true);
         player.x = playerPosition.x();
         player.y = playerPosition.y();
-        player.direction = Direction.LEFT;
+        player.direction = Direction.DOWN;
         world.entities.put(player.name, player);
 
-        PixelCoordinate nonPlayerPosition = Tile.tileToPixelCoordinate(10, 10);
+        PixelCoordinate nonPlayerPosition = Tile.tileToPixelCoordinate(20, 10);
         Entity npc = Entity.createNonPlayer(Player.RED.name().toLowerCase());
         npc.x = nonPlayerPosition.x();
         npc.y = nonPlayerPosition.y();
         world.entities.put(npc.name, npc);
 
-        PixelCoordinate nonPlayerPosition2 = Tile.tileToPixelCoordinate(15, 15);
+        PixelCoordinate nonPlayerPosition2 = Tile.tileToPixelCoordinate(25, 15);
         Entity npc2 = Entity.createNonPlayer(Player.BLUE.name().toLowerCase());
         npc2.x = nonPlayerPosition2.x();
         npc2.y = nonPlayerPosition2.y();
@@ -49,10 +50,10 @@ public class Game implements Runnable {
 
 
 //        Entity projectile1 = Entity.createProjectile("projectile1", new TileCoordinate(5, 14), Direction.LEFT);
-        Entity projectile1 = Entity.createProjectile("projectile1", new TileCoordinate(5, 14), Direction.RIGHT);
+        Entity projectile1 = Entity.createProjectile("projectile1", new TileCoordinate(35, 14), Direction.RIGHT);
         world.entities.put(projectile1.name, projectile1);
 
-        Entity projectile2 = Entity.createProjectile("projectile2", new TileCoordinate(10, 0), Direction.DOWN);
+        Entity projectile2 = Entity.createProjectile("projectile2", new TileCoordinate(30, 0), Direction.DOWN);
         world.entities.put(projectile2.name, projectile2);
 
         Entity projectile3 = Entity.createProjectile("projectile3", new TileCoordinate(24, 11), Direction.LEFT);

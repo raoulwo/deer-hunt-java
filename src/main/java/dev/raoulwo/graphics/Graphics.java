@@ -24,6 +24,7 @@ public class Graphics {
     public static final int MAX_SCREEN_ROWS = TARGET_RESOLUTION_HEIGHT / ORIGINAL_TILE_SIZE;
 
     private final Graphics2D g;
+    private final Camera camera = Camera.instance();
 
     public Graphics(final Graphics2D g) {
         this.g = g;
@@ -31,17 +32,25 @@ public class Graphics {
 
     public void drawTile(BufferedImage image, int x, int y) {
         PixelCoordinate pixel = Tile.tileToPixelCoordinate(x, y);
-        g.drawImage(image, pixel.x(), pixel.y(), Graphics.SCALED_TILE_SIZE, Graphics.SCALED_TILE_SIZE, null);
+        int screenX = pixel.x() - camera.x + Camera.SCREEN_X;
+        int screenY = pixel.y() - camera.y + Camera.SCREEN_Y;
+        if (camera.isVisible(pixel.x(), pixel.y())) {
+            g.drawImage(image, screenX, screenY, Graphics.SCALED_TILE_SIZE, Graphics.SCALED_TILE_SIZE, null);
+        }
     }
 
     public void drawSprite(BufferedImage image, int x, int y) {
-        g.drawImage(image, x, y, Graphics.SCALED_TILE_SIZE, Graphics.SCALED_TILE_SIZE, null);
+        int screenX = x - camera.x + Camera.SCREEN_X;
+        int screenY = y - camera.y + Camera.SCREEN_Y;
+        g.drawImage(image, screenX, screenY, Graphics.SCALED_TILE_SIZE, Graphics.SCALED_TILE_SIZE, null);
     }
 
     public void drawObstacle(Obstacle obstacle, int x, int y) {
         if (x == obstacle.coordinate.x() && y == obstacle.coordinate.y()) {
             PixelCoordinate pixel = Tile.tileToPixelCoordinate(x, y);
-            g.drawImage(obstacle.tile.sprite, pixel.x(), pixel.y(), obstacle.width * SCALED_TILE_SIZE, obstacle.height * SCALED_TILE_SIZE, null);
+            int screenX = pixel.x() - camera.x + Camera.SCREEN_X;
+            int screenY = pixel.y() - camera.y + Camera.SCREEN_Y;
+            g.drawImage(obstacle.tile.sprite, screenX, screenY, obstacle.width * SCALED_TILE_SIZE, obstacle.height * SCALED_TILE_SIZE, null);
         }
     }
 
@@ -50,12 +59,3 @@ public class Graphics {
         g.drawRect( x, y, width, height);
     }
 }
-
-// TODO: Move this to a game world class.
-
-// Maximum number of tiles in the world, chosen arbitrarily for now.
-//    public final int maxWorldColumns = 44;
-//    public final int maxWorldRows = 32;
-
-//    public final int worldWidth = SCALED_TILE_SIZE * maxWorldColumns;
-//    public final int worldHeight = SCALED_TILE_SIZE * maxWorldRows;
