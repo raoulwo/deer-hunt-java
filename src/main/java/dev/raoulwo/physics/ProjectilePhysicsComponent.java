@@ -7,26 +7,12 @@ import dev.raoulwo.tile.Obstacle;
 import dev.raoulwo.tile.Tile;
 import dev.raoulwo.tile.TileCoordinate;
 
-public class PlayerPhysicsComponent implements PhysicsComponent {
+public class ProjectilePhysicsComponent implements PhysicsComponent {
 
-    // NOTE: The tile size should be evenly divisible by the player speed, else the player coordinates
-    // get messed up and the bound checks don't work!
-    private int speed = 4;
-    private int pixelsMoved = 0;
+    private int speed = 8;
 
     @Override
     public void update(World world, Entity entity) {
-        switch (entity.state) {
-            case IDLE -> idle(world,entity);
-            case WALK -> walk(world, entity);
-        }
-    }
-
-    private void walk(World world, Entity entity) {
-        if (!entity.moving) {
-            return;
-        }
-
         TileCoordinate tileCoordinate = Tile.pixelToTileCoordinate(entity.x, entity.y);
         Obstacle obstacle = switch (entity.direction) {
             case UP -> world.obstacles[tileCoordinate.x()][Math.max(tileCoordinate.y() - 1, 0)];
@@ -44,6 +30,7 @@ public class PlayerPhysicsComponent implements PhysicsComponent {
         switch (entity.direction) {
             case UP -> {
                 if (entity.y <= 0) {
+                    onBoundHit(world, entity);
                     entity.y = 0;
                     break;
                 }
@@ -51,14 +38,17 @@ public class PlayerPhysicsComponent implements PhysicsComponent {
                 var coordinate = Tile.tileToPixelCoordinate(0, tileCoordinate.y());
                 if (obstacle != null && entity.y < coordinate.y()) {
                     entity.y = coordinate.y();
+                    onObstacleHit(world, entity, obstacle);
                 }
                 if (otherEntity != null && entity.y < coordinate.y()) {
                     entity.y = coordinate.y();
+                    onEntityHit(world, entity, otherEntity);
                 }
             }
             case DOWN -> {
                 int bound = (World.MAX_LEVEL_ROWS - 1) * Graphics.SCALED_TILE_SIZE;
                 if (entity.y >= bound) {
+                    onBoundHit(world, entity);
                     entity.y = bound;
                     break;
                 }
@@ -66,13 +56,16 @@ public class PlayerPhysicsComponent implements PhysicsComponent {
                 var coordinate = Tile.tileToPixelCoordinate(0, tileCoordinate.y());
                 if (obstacle != null && entity.y > coordinate.y()) {
                     entity.y = coordinate.y();
+                    onObstacleHit(world, entity, obstacle);
                 }
                 if (otherEntity != null && entity.y > coordinate.y()) {
                     entity.y = coordinate.y();
+                    onEntityHit(world, entity, otherEntity);
                 }
             }
             case LEFT -> {
                 if (entity.x <= 0) {
+                    onBoundHit(world, entity);
                     entity.x = 0;
                     break;
                 }
@@ -80,14 +73,17 @@ public class PlayerPhysicsComponent implements PhysicsComponent {
                 var coordinate = Tile.tileToPixelCoordinate(tileCoordinate.x(), 0);
                 if (obstacle != null && entity.x < coordinate.x()) {
                     entity.x = coordinate.x();
+                    onObstacleHit(world, entity, obstacle);
                 }
                 if (otherEntity != null && entity.x < coordinate.x()) {
                     entity.x = coordinate.x();
+                    onEntityHit(world, entity, otherEntity);
                 }
             }
             case RIGHT -> {
                 int bound = (World.MAX_LEVEL_COLUMNS - 1) * Graphics.SCALED_TILE_SIZE;
                 if (entity.x >= bound) {
+                    onBoundHit(world, entity);
                     entity.x = bound;
                     break;
                 }
@@ -95,21 +91,26 @@ public class PlayerPhysicsComponent implements PhysicsComponent {
                 var coordinate = Tile.tileToPixelCoordinate(tileCoordinate.x(), 0);
                 if (obstacle != null && entity.x > coordinate.x()) {
                     entity.x = coordinate.x();
+                    onObstacleHit(world, entity, obstacle);
                 }
                 if (otherEntity != null && entity.x > coordinate.x()) {
                     entity.x = coordinate.x();
+                    onEntityHit(world, entity, otherEntity);
                 }
             }
         }
-
-        pixelsMoved += speed;
-        if (pixelsMoved >= Graphics.SCALED_TILE_SIZE) {
-            entity.moving = false;
-            pixelsMoved = 0;
-        }
     }
 
-    private void idle(World world, Entity entity) {
+    private void onBoundHit(World world, Entity entity) {
+        world.removeEntity(entity);
+    }
+
+    private void onObstacleHit(World world, Entity entity, Obstacle obstacle) {
+        world.removeEntity(entity);
+    }
+
+    private void onEntityHit(World world, Entity entity, Entity other) {
+        world.removeEntity(entity);
+        // TODO: Trigger a hit on the other entity.
     }
 }
-

@@ -9,6 +9,8 @@ import dev.raoulwo.tile.TileCoordinate;
 import java.awt.image.BufferedImage;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.ConcurrentHashMap;
+import java.util.concurrent.ConcurrentMap;
 
 public class World {
     public static final int MAX_LEVEL_COLUMNS = 30;
@@ -16,7 +18,7 @@ public class World {
 
     public Tile[][] floor = new Tile[MAX_LEVEL_COLUMNS][MAX_LEVEL_ROWS];
     public Obstacle[][] obstacles = new Obstacle[MAX_LEVEL_COLUMNS][MAX_LEVEL_ROWS];
-    public List<Entity> entities = new ArrayList<>();
+    public ConcurrentMap<String, Entity> entities = new ConcurrentHashMap<>();
 
     World() {
         try {
@@ -25,7 +27,7 @@ public class World {
 
             BufferedImage obstacleSprite = Resource.loadSprite("/sprites/tiles/obstacles/", "rock_01.png");
             Tile obstacleTile = new Tile(obstacleSprite, true);
-            Obstacle obstacle = new Obstacle(obstacleTile, new TileCoordinate(10, 4));
+            Obstacle obstacle = new Obstacle(obstacleTile, new TileCoordinate(14, 4));
 
             BufferedImage bigObstacleSprite = Resource.loadSprite("/sprites/tiles/obstacles/", "rock_04.png");
             Tile bigObstacleTile = new Tile(bigObstacleSprite, true);
@@ -63,7 +65,7 @@ public class World {
         int x = tile.x();
         int y = tile.y();
 
-        for (Entity entity : entities) {
+        for (Entity entity : entities.values()) {
             TileCoordinate entityTile = Tile.pixelToTileCoordinate(entity.x, entity.y);
             if (entityTile.x() == x && entityTile.y() == y) {
                 return entity;
@@ -71,5 +73,9 @@ public class World {
         }
 
         return null;
+    }
+
+    public void removeEntity(Entity entity) {
+        entities.remove(entity.name);
     }
 }

@@ -1,11 +1,13 @@
 package dev.raoulwo;
 
 import dev.raoulwo.audio.AudioManager;
+import dev.raoulwo.entity.Direction;
 import dev.raoulwo.entity.Entity;
 import dev.raoulwo.entity.Player;
 import dev.raoulwo.graphics.Graphics;
 import dev.raoulwo.tile.Obstacle;
 import dev.raoulwo.tile.Tile;
+import dev.raoulwo.tile.TileCoordinate;
 import dev.raoulwo.util.PixelCoordinate;
 import dev.raoulwo.util.Time;
 
@@ -19,9 +21,6 @@ public class Game implements Runnable {
 
     private final World world = new World();
 
-    private final Entity player = Entity.createPlayer(Player.GREEN.name().toLowerCase());
-    private final Entity npc = Entity.createNonPlayer(Player.RED.name().toLowerCase());
-
     private final AudioManager audio = AudioManager.instance();
 
     public Game() {
@@ -29,14 +28,26 @@ public class Game implements Runnable {
         this.window = new Window(this::draw, new WindowOptions());
 
         PixelCoordinate playerPosition = Tile.tileToPixelCoordinate(10, 14);
+        Entity player = Entity.createPlayer(Player.GREEN.name().toLowerCase());
         player.x = playerPosition.x();
         player.y = playerPosition.y();
-        world.entities.add(player);
+        world.entities.put(player.name, player);
 
         PixelCoordinate nonPlayerPosition = Tile.tileToPixelCoordinate(10, 10);
+        Entity npc = Entity.createNonPlayer(Player.RED.name().toLowerCase());
         npc.x = nonPlayerPosition.x();
         npc.y = nonPlayerPosition.y();
-        world.entities.add(npc);
+        world.entities.put(npc.name, npc);
+
+        Entity projectile1 = Entity.createProjectile("projectile1", new TileCoordinate(5, 14), Direction.LEFT);
+        world.entities.put(projectile1.name, projectile1);
+
+        Entity projectile2 = Entity.createProjectile("projectile2", new TileCoordinate(10, 0), Direction.DOWN);
+        world.entities.put(projectile2.name, projectile2);
+
+        Entity projectile3 = Entity.createProjectile("projectile3", new TileCoordinate(24, 11), Direction.LEFT);
+        world.entities.put(projectile3.name, projectile3);
+
     }
 
     /**
@@ -78,7 +89,9 @@ public class Game implements Runnable {
      * Is called once per frame from within the core game loop, contains the game logic.
      */
     private void update() {
-        player.update(world);
+        for (var entity : world.entities.values()) {
+            entity.update(world);
+        }
     }
 
     /**
@@ -102,8 +115,9 @@ public class Game implements Runnable {
             }
         }
 
-        player.graphics.draw(player, g);
-        npc.graphics.draw(npc, g);
+        for (var entity : world.entities.values()) {
+            entity.graphics.draw(entity, g);
+        }
     }
 
 }
