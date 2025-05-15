@@ -4,14 +4,10 @@ import dev.raoulwo.audio.AudioManager;
 import dev.raoulwo.entity.Entity;
 import dev.raoulwo.entity.Player;
 import dev.raoulwo.graphics.Graphics;
-import dev.raoulwo.resource.Resource;
 import dev.raoulwo.tile.Obstacle;
 import dev.raoulwo.tile.Tile;
-import dev.raoulwo.tile.TileCoordinate;
 import dev.raoulwo.util.PixelCoordinate;
 import dev.raoulwo.util.Time;
-
-import java.awt.image.BufferedImage;
 
 /**
  * Contains the core game loop.
@@ -24,6 +20,7 @@ public class Game implements Runnable {
     private final World world = new World();
 
     private final Entity player = Entity.createPlayer(Player.GREEN.name().toLowerCase());
+    private final Entity npc = Entity.createNonPlayer(Player.RED.name().toLowerCase());
 
     private final AudioManager audio = AudioManager.instance();
 
@@ -31,9 +28,15 @@ public class Game implements Runnable {
         // We pass the draw method as a callback to the window.
         this.window = new Window(this::draw, new WindowOptions());
 
-        PixelCoordinate pixel = Tile.tileToPixelCoordinate(0, 0);
-        player.x = pixel.x();
-        player.y = pixel.y();
+        PixelCoordinate playerPosition = Tile.tileToPixelCoordinate(10, 14);
+        player.x = playerPosition.x();
+        player.y = playerPosition.y();
+        world.entities.add(player);
+
+        PixelCoordinate nonPlayerPosition = Tile.tileToPixelCoordinate(10, 10);
+        npc.x = nonPlayerPosition.x();
+        npc.y = nonPlayerPosition.y();
+        world.entities.add(npc);
     }
 
     /**
@@ -100,7 +103,7 @@ public class Game implements Runnable {
         }
 
         player.graphics.draw(player, g);
-
+        npc.graphics.draw(npc, g);
     }
 
 }

@@ -6,11 +6,10 @@
   <component name="ChangeListManager">
     <list default="true" id="a7c0e687-51cd-47cb-9f7e-eaa31dcd9705" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/dev/raoulwo/AudioManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dev/raoulwo/audio/AudioManager.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/dev/raoulwo/Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dev/raoulwo/Game.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/dev/raoulwo/Panel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dev/raoulwo/Panel.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/dev/raoulwo/World.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dev/raoulwo/World.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/dev/raoulwo/graphics/Graphics.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dev/raoulwo/graphics/Graphics.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/dev/raoulwo/entity/Entity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dev/raoulwo/entity/Entity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/dev/raoulwo/input/PlayerInputComponent.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dev/raoulwo/input/PlayerInputComponent.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/dev/raoulwo/physics/PlayerPhysicsComponent.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dev/raoulwo/physics/PlayerPhysicsComponent.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -48,6 +47,7 @@
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
     &quot;git-widget-placeholder&quot;: &quot;feature/game&quot;,
+    &quot;junie.onboarding.icon.badge.shown&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
@@ -109,6 +109,8 @@
       <updated>1747156306103</updated>
       <workItem from="1747156308442" duration="15869000" />
       <workItem from="1747212303065" duration="11263000" />
+      <workItem from="1747293083122" duration="22000" />
+      <workItem from="1747293112808" duration="1355000" />
     </task>
     <servers />
   </component>

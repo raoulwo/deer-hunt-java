@@ -1,11 +1,14 @@
 package dev.raoulwo;
 
+import dev.raoulwo.entity.Entity;
 import dev.raoulwo.resource.Resource;
 import dev.raoulwo.tile.Obstacle;
 import dev.raoulwo.tile.Tile;
 import dev.raoulwo.tile.TileCoordinate;
 
 import java.awt.image.BufferedImage;
+import java.util.ArrayList;
+import java.util.List;
 
 public class World {
     public static final int MAX_LEVEL_COLUMNS = 30;
@@ -13,6 +16,7 @@ public class World {
 
     public Tile[][] floor = new Tile[MAX_LEVEL_COLUMNS][MAX_LEVEL_ROWS];
     public Obstacle[][] obstacles = new Obstacle[MAX_LEVEL_COLUMNS][MAX_LEVEL_ROWS];
+    public List<Entity> entities = new ArrayList<>();
 
     World() {
         try {
@@ -53,5 +57,19 @@ public class World {
                 obstacles[tileX + x][tileY + y] = obstacle;
             }
         }
+    }
+
+    public Entity getEntity(TileCoordinate tile) {
+        int x = tile.x();
+        int y = tile.y();
+
+        for (Entity entity : entities) {
+            TileCoordinate entityTile = Tile.pixelToTileCoordinate(entity.x, entity.y);
+            if (entityTile.x() == x && entityTile.y() == y) {
+                return entity;
+            }
+        }
+
+        return null;
     }
 }

@@ -4,6 +4,7 @@ import dev.raoulwo.World;
 import dev.raoulwo.graphics.GraphicsComponent;
 import dev.raoulwo.graphics.PlayerGraphicsComponent;
 import dev.raoulwo.input.InputComponent;
+import dev.raoulwo.input.NonPlayerInputComponent;
 import dev.raoulwo.input.PlayerInputComponent;
 import dev.raoulwo.physics.PhysicsComponent;
 import dev.raoulwo.physics.PlayerPhysicsComponent;
@@ -25,6 +26,13 @@ public class Entity {
     public static Entity createPlayer(String name) {
         return new Entity(name,
                 new PlayerInputComponent(),
+                new PlayerPhysicsComponent(),
+                new PlayerGraphicsComponent(name));
+    }
+
+    public static Entity createNonPlayer(String name) {
+        return new Entity(name,
+                new NonPlayerInputComponent(),
                 new PlayerPhysicsComponent(),
                 new PlayerGraphicsComponent(name));
     }

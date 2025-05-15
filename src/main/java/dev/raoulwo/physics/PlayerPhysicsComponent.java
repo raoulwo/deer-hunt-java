@@ -34,6 +34,12 @@ public class PlayerPhysicsComponent implements PhysicsComponent {
             case LEFT -> world.obstacles[Math.max(tileCoordinate.x() - 1, 0)][tileCoordinate.y()];
             case RIGHT -> world.obstacles[Math.min(tileCoordinate.x() + 1, World.MAX_LEVEL_COLUMNS - 1)][tileCoordinate.y()];
         };
+        Entity otherEntity = switch (entity.direction) {
+            case UP -> world.getEntity(new TileCoordinate(tileCoordinate.x(), tileCoordinate.y() - 1)) ;
+            case DOWN -> world.getEntity(new TileCoordinate(tileCoordinate.x(), tileCoordinate.y() + 1));
+            case LEFT -> world.getEntity(new TileCoordinate(tileCoordinate.x() - 1, tileCoordinate.y()));
+            case RIGHT -> world.getEntity(new TileCoordinate(tileCoordinate.x() + 1, tileCoordinate.y()));
+        };
 
         switch (entity.direction) {
             case UP -> {
@@ -44,6 +50,9 @@ public class PlayerPhysicsComponent implements PhysicsComponent {
                 entity.y -= speed;
                 var coordinate = Tile.tileToPixelCoordinate(0, tileCoordinate.y());
                 if (obstacle != null && entity.y < coordinate.y()) {
+                    entity.y = coordinate.y();
+                }
+                if (otherEntity != null && entity.y < coordinate.y()) {
                     entity.y = coordinate.y();
                 }
             }
@@ -58,6 +67,9 @@ public class PlayerPhysicsComponent implements PhysicsComponent {
                 if (obstacle != null && entity.y > coordinate.y()) {
                     entity.y = coordinate.y();
                 }
+                if (otherEntity != null && entity.y > coordinate.y()) {
+                    entity.y = coordinate.y();
+                }
             }
             case LEFT -> {
                 if (entity.x <= 0) {
@@ -67,6 +79,9 @@ public class PlayerPhysicsComponent implements PhysicsComponent {
                 entity.x -= speed;
                 var coordinate = Tile.tileToPixelCoordinate(tileCoordinate.x(), 0);
                 if (obstacle != null && entity.x < coordinate.x()) {
+                    entity.x = coordinate.x();
+                }
+                if (otherEntity != null && entity.x < coordinate.x()) {
                     entity.x = coordinate.x();
                 }
             }
@@ -79,6 +94,9 @@ public class PlayerPhysicsComponent implements PhysicsComponent {
                 entity.x += speed;
                 var coordinate = Tile.tileToPixelCoordinate(tileCoordinate.x(), 0);
                 if (obstacle != null && entity.x > coordinate.x()) {
+                    entity.x = coordinate.x();
+                }
+                if (otherEntity != null && entity.x > coordinate.x()) {
                     entity.x = coordinate.x();
                 }
             }
