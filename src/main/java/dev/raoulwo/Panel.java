@@ -1,11 +1,7 @@
 package dev.raoulwo;
 
-import java.net.URL;
-
-import dev.raoulwo.audio.AudioManager;
 import dev.raoulwo.graphics.DrawFn;
 import dev.raoulwo.input.InputManager;
-import dev.raoulwo.tile.TileManager;
 
 import javax.swing.*;
 import java.awt.*;
@@ -18,11 +14,6 @@ public class Panel extends JPanel {
      * Callback passed from the main game class so that we can define graphics calls there.
      */
     private final DrawFn drawFn;
-
-    // TODO: Clean these up
-    public AudioManager audio = AudioManager.instance();
-    public TileManager tileManager = new TileManager(this);
-//    public Item item = new Heart(this);
 
     // TODO: Created this constructor just to make the host panel compile.
     public Panel() {
@@ -41,12 +32,9 @@ public class Panel extends JPanel {
         setPreferredSize(new Dimension(width, height));
         setBackground(Color.BLACK);
         setDoubleBuffered(true);
-        // Allows the game panel to be focused in order to receive keyboard inputs.
+        // Allows the game panel to be focused to receive keyboard inputs.
         setFocusable(true);
-
         addKeyListener(InputManager.instance());
-
-//        playMusic(audio.fightMusic);
     }
 
     /**
@@ -61,7 +49,7 @@ public class Panel extends JPanel {
         Graphics2D g2d = (Graphics2D) g;
         drawFn.draw(new dev.raoulwo.graphics.Graphics(g2d));
 
-        // The graphics object needs to be disposed after use to save some memory.
+        // The graphics object needs to be disposed of after use to save some memory.
         g2d.dispose();
     }
 

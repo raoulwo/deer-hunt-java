@@ -1,7 +1,6 @@
 package dev.raoulwo.tile;
 
 import dev.raoulwo.Panel;
-import dev.raoulwo.entity.OldPlayer;
 import dev.raoulwo.resource.Resource;
 
 import java.awt.*;
