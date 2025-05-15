@@ -6,11 +6,6 @@
   <component name="ChangeListManager">
     <list default="true" id="a7c0e687-51cd-47cb-9f7e-eaa31dcd9705" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/dev/raoulwo/Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dev/raoulwo/Game.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/dev/raoulwo/entity/State.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dev/raoulwo/entity/State.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/dev/raoulwo/graphics/PlayerGraphicsComponent.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dev/raoulwo/graphics/PlayerGraphicsComponent.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/dev/raoulwo/input/NonPlayerInputComponent.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dev/raoulwo/input/NonPlayerInputComponent.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/dev/raoulwo/input/PlayerInputComponent.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dev/raoulwo/input/PlayerInputComponent.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/dev/raoulwo/physics/PhysicsComponent.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dev/raoulwo/physics/PhysicsComponent.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/dev/raoulwo/physics/PlayerPhysicsComponent.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dev/raoulwo/physics/PlayerPhysicsComponent.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/dev/raoulwo/physics/ProjectilePhysicsComponent.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dev/raoulwo/physics/ProjectilePhysicsComponent.java" afterDir="false" />
@@ -113,7 +108,7 @@
       <workItem from="1747156308442" duration="15869000" />
       <workItem from="1747212303065" duration="11263000" />
       <workItem from="1747293083122" duration="22000" />
-      <workItem from="1747293112808" duration="8513000" />
+      <workItem from="1747293112808" duration="10422000" />
     </task>
     <servers />
   </component>

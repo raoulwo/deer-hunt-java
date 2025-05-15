@@ -8,7 +8,7 @@ public interface PhysicsComponent {
 
     /**
      *
-     * @param world
+     * @param world The game world instance.
      * @param entity The entity that is hit by the other entity.
      * @param other The entity that is hitting the entity.
      */

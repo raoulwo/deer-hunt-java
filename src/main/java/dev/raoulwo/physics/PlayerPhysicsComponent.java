@@ -132,6 +132,18 @@ public class PlayerPhysicsComponent implements PhysicsComponent {
             case RIGHT -> new TileCoordinate(playerPosition.x() + 1, playerPosition.y());
         };
 
+        // TODO: For now, players cannot hit entities that are one tile away.
+        // To change that, I would need to update the collision code.
+        Entity other = world.getEntity(projectilePosition);
+        if (other != null) {
+            return;
+        }
+
+        Obstacle obstacle = world.obstacles[projectilePosition.x()][projectilePosition.y()];
+        if (obstacle != null) {
+            return;
+        }
+
         if (projectilePosition.y() < 0 || projectilePosition.y() >= World.MAX_LEVEL_ROWS) {
             return;
         }
