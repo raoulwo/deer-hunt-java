@@ -5,25 +5,16 @@ import dev.raoulwo.entity.Entity;
 import dev.raoulwo.resource.Resource;
 
 import java.awt.image.BufferedImage;
-import java.util.HashMap;
 
 public class ProjectileGraphicsComponent implements GraphicsComponent {
 
-    private HashMap<Direction, BufferedImage> sprites = new HashMap<>();
+    private BufferedImage sprite;
 
     private static final Camera camera = Camera.instance();
 
     public ProjectileGraphicsComponent() {
         try {
-            // TODO: Hardcoded some sprites for now.
-            var south = Resource.loadSprite("/sprites/players/ninja_yellow/idle/", "idle_south.png");
-            var north = Resource.loadSprite("/sprites/players/ninja_yellow/idle/", "idle_north.png");
-            var west = Resource.loadSprite("/sprites/players/ninja_yellow/idle/", "idle_west.png");
-            var east = Resource.loadSprite("/sprites/players/ninja_yellow/idle/", "idle_east.png");
-            sprites.put(Direction.DOWN, south);
-            sprites.put(Direction.UP, north);
-            sprites.put(Direction.LEFT, west);
-            sprites.put(Direction.RIGHT, east);
+            sprite = Resource.loadSprite("/sprites/projectiles/", "shuriken.png");
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -33,6 +24,6 @@ public class ProjectileGraphicsComponent implements GraphicsComponent {
     public void draw(Entity entity, Graphics g) {
         entity.screenX = entity.x - camera.x + Camera.SCREEN_X;
         entity.screenY = entity.y - camera.y + Camera.SCREEN_Y;
-        g.drawSprite(sprites.get(entity.direction), entity.x, entity.y);
+        g.drawSprite(sprite, entity.x, entity.y);
     }
 }
