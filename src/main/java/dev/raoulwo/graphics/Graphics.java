@@ -2,6 +2,7 @@ package dev.raoulwo.graphics;
 
 import dev.raoulwo.tile.Obstacle;
 import dev.raoulwo.tile.Tile;
+import dev.raoulwo.ui.UserInterfaceElement;
 import dev.raoulwo.util.PixelCoordinate;
 
 import java.awt.*;
@@ -19,9 +20,8 @@ public class Graphics {
     // Scaled tile size in pixels calculated by original tile size and scale factor.
     public static final int SCALED_TILE_SIZE = ORIGINAL_TILE_SIZE * SCALE;
 
-    // Maximum number of vertical/horizontal tiles on the screen.
-    public static final int MAX_SCREEN_COLUMNS = TARGET_RESOLUTION_WIDTH / ORIGINAL_TILE_SIZE;
-    public static final int MAX_SCREEN_ROWS = TARGET_RESOLUTION_HEIGHT / ORIGINAL_TILE_SIZE;
+    public static final int TOTAL_WIDTH = TARGET_RESOLUTION_WIDTH * SCALE;
+    public static final int TOTAL_HEIGHT = TARGET_RESOLUTION_HEIGHT * SCALE;
 
     private final Graphics2D g;
     private final Camera camera = Camera.instance();
@@ -58,4 +58,9 @@ public class Graphics {
         g.setColor(color);
         g.drawRect( x, y, width, height);
     }
+
+    public void drawUserInterfaceElement(UserInterfaceElement uiElement) {
+        g.drawImage(uiElement.image, uiElement.x, uiElement.y, uiElement.width * uiElement.scale, uiElement.height * uiElement.scale, null);
+    }
 }
+

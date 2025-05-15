@@ -4,14 +4,15 @@ import dev.raoulwo.audio.AudioManager;
 import dev.raoulwo.entity.Direction;
 import dev.raoulwo.entity.Entity;
 import dev.raoulwo.entity.Player;
-import dev.raoulwo.entity.State;
-import dev.raoulwo.graphics.Camera;
 import dev.raoulwo.graphics.Graphics;
 import dev.raoulwo.tile.Obstacle;
 import dev.raoulwo.tile.Tile;
 import dev.raoulwo.tile.TileCoordinate;
+import dev.raoulwo.ui.UserInterface;
 import dev.raoulwo.util.PixelCoordinate;
 import dev.raoulwo.util.Time;
+
+import java.awt.*;
 
 /**
  * Contains the core game loop.
@@ -24,6 +25,7 @@ public class Game implements Runnable {
     private final World world = new World();
 
     private final AudioManager audio = AudioManager.instance();
+    private final UserInterface ui = UserInterface.instance();
 
     public Game() {
         // We pass the draw method as a callback to the window.
@@ -128,6 +130,14 @@ public class Game implements Runnable {
 
         for (var entity : world.entities.values()) {
             entity.graphics.draw(entity, g);
+        }
+
+        for (var portraitBorders : ui.portraitBorders) {
+            g.drawUserInterfaceElement(portraitBorders);
+        }
+
+        for (var portrait : ui.portraits.values()) {
+            g.drawUserInterfaceElement(portrait);
         }
     }
 

@@ -27,16 +27,16 @@ public class InputManager implements KeyListener {
     public void keyPressed(KeyEvent e) {
         int keyCode = e.getKeyCode();
 
-        if (keyCode == KeyEvent.VK_W) {
+        if (keyCode == KeyEvent.VK_UP || keyCode == KeyEvent.VK_W) {
             upPressed = true;
         }
-        if (keyCode == KeyEvent.VK_S) {
+        if (keyCode == KeyEvent.VK_DOWN || keyCode == KeyEvent.VK_S) {
             downPressed = true;
         }
-        if (keyCode == KeyEvent.VK_A) {
+        if (keyCode == KeyEvent.VK_LEFT || keyCode == KeyEvent.VK_A) {
             leftPressed = true;
         }
-        if (keyCode == KeyEvent.VK_D) {
+        if (keyCode == KeyEvent.VK_RIGHT || keyCode == KeyEvent.VK_D) {
             rightPressed = true;
         }
         if (keyCode == KeyEvent.VK_SPACE) {
@@ -48,16 +48,16 @@ public class InputManager implements KeyListener {
     public void keyReleased(KeyEvent e) {
         int keyCode = e.getKeyCode();
 
-        if (keyCode == KeyEvent.VK_W) {
+        if (keyCode == KeyEvent.VK_UP || keyCode == KeyEvent.VK_W) {
             upPressed = false;
         }
-        if (keyCode == KeyEvent.VK_S) {
+        if (keyCode == KeyEvent.VK_DOWN || keyCode == KeyEvent.VK_S) {
             downPressed = false;
         }
-        if (keyCode == KeyEvent.VK_A) {
+        if (keyCode == KeyEvent.VK_LEFT || keyCode == KeyEvent.VK_A) {
             leftPressed = false;
         }
-        if (keyCode == KeyEvent.VK_D) {
+        if (keyCode == KeyEvent.VK_RIGHT || keyCode == KeyEvent.VK_D) {
             rightPressed = false;
         }
         if (keyCode == KeyEvent.VK_SPACE) {
