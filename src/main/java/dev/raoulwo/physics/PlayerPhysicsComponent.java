@@ -168,4 +168,3 @@ public class PlayerPhysicsComponent implements PhysicsComponent {
         world.entities.put(projectile.name, projectile);
     }
 }
-
