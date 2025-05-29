@@ -50,6 +50,11 @@ public class Game implements Runnable {
         npc2.y = nonPlayerPosition2.y();
         world.entities.put(npc2.name, npc2);
 
+        PixelCoordinate monkeyPosition = Tile.tileToPixelCoordinate(30, 18);
+        Entity monkey = Entity.createMonkey("Monkey");
+        monkey.x = monkeyPosition.x();
+        monkey.y = monkeyPosition.y();
+        world.entities.put(monkey.name, monkey);
 
 //        Entity projectile1 = Entity.createProjectile("projectile1", new TileCoordinate(5, 14), Direction.LEFT);
         Entity projectile1 = Entity.createProjectile("projectile1", new TileCoordinate(35, 14), Direction.RIGHT);

@@ -62,6 +62,14 @@ public class Entity {
                 new PlayerGraphicsComponent(name, false));
     }
 
+    public static Entity createMonkey(String name) {
+        return new Entity(name,
+                new MonkeyInputComponent(),
+                new MonkeyPhysicsComponent(),
+                new MonkeyGraphicsComponent()
+                );
+    }
+
     public static Entity createProjectile(String name, TileCoordinate position, Direction direction) {
         Entity projectile = new Entity(name,
                 new ProjectileInputComponent(),

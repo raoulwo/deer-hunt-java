@@ -1,6 +1,5 @@
 package dev.raoulwo.graphics;
 
-import dev.raoulwo.entity.Direction;
 import dev.raoulwo.entity.Entity;
 import dev.raoulwo.resource.Resource;
 
