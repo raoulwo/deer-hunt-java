@@ -27,6 +27,17 @@ public class PlayerPhysicsComponent implements PhysicsComponent {
     @Override
     public void onHit(World world, Entity entity, Entity other) {
         entity.state = State.ATTACKED;
+        if (other.name.contains("projectile")) {
+            if (other.name.contains("red") && !entity.name.equals("red")) {
+                world.entities.get("red").reduceScore(5);
+            } else if (other.name.contains("blue") && !entity.name.equals("blue")) {
+                world.entities.get("blue").reduceScore(5);
+            } else if (other.name.contains("yellow") && !entity.name.equals("yellow")) {
+                world.entities.get("yellow").reduceScore(5);
+            } else if (other.name.contains("green") && !entity.name.equals("green")) {
+                world.entities.get("green").reduceScore(5);
+            }
+        }
     }
 
     private void walk(World world, Entity entity) {
@@ -152,7 +163,8 @@ public class PlayerPhysicsComponent implements PhysicsComponent {
             return;
         }
 
-        Entity projectile = Entity.createProjectile("projectile_" + System.currentTimeMillis(), projectilePosition, entity.direction);
+        Entity projectile = Entity.createProjectile(entity.name  + "_projectile_" + System.currentTimeMillis(),
+                projectilePosition, entity.direction);
         world.entities.put(projectile.name, projectile);
     }
 }

@@ -109,6 +109,9 @@ public class Game implements Runnable {
     private void update() {
         for (var entity : world.entities.values()) {
             entity.update(world);
+            if (entity.name.equals("green")) {
+                System.out.println(entity.getScore());
+            }
         }
     }
 

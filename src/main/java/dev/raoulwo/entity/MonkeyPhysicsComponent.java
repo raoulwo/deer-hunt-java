@@ -115,5 +115,16 @@ public class MonkeyPhysicsComponent implements PhysicsComponent {
     @Override
     public void onHit(World world, Entity entity, Entity other) {
         entity.state = State.ATTACKED;
+        if (other.name.contains("projectile")) {
+            if (other.name.contains("red")) {
+                world.entities.get("red").addScore(5);
+            } else if (other.name.contains("blue")) {
+                world.entities.get("blue").addScore(5);
+            } else if (other.name.contains("yellow")) {
+                world.entities.get("yellow").addScore(5);
+            } else if (other.name.contains("green")) {
+                world.entities.get("green").addScore(5);
+            }
+        }
     }
 }

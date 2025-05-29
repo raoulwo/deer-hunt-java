@@ -34,6 +34,8 @@ public class Entity {
     public boolean moving = false;
     public boolean attacking = false;
 
+    private int score = 0;
+
     public Entity(String name, InputComponent input, PhysicsComponent physics, GraphicsComponent graphics) {
         this.name = name;
         this.input = input;
@@ -86,6 +88,21 @@ public class Entity {
     public void update(World world) {
         input.update(world, this);
         physics.update(world, this);
+    }
+
+    public int getScore() {
+        return score;
+    }
+
+    public void addScore(int score) {
+        this.score += score;
+    }
+
+    public void reduceScore(int score) {
+        this.score -= score;
+        if (this.score < 0) {
+            this.score = 0;
+        }
     }
 }
 

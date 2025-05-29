@@ -6,18 +6,10 @@
   <component name="ChangeListManager">
     <list default="true" id="a7c0e687-51cd-47cb-9f7e-eaa31dcd9705" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/sprites/monkey/dead.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/dev/raoulwo/World.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dev/raoulwo/World.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/dev/raoulwo/Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dev/raoulwo/Game.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/dev/raoulwo/entity/Entity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dev/raoulwo/entity/Entity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/dev/raoulwo/entity/MonkeyGraphicsComponent.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dev/raoulwo/entity/MonkeyGraphicsComponent.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/dev/raoulwo/entity/MonkeyInputComponent.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dev/raoulwo/entity/MonkeyInputComponent.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/dev/raoulwo/entity/MonkeyPhysicsComponent.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dev/raoulwo/entity/MonkeyPhysicsComponent.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/dev/raoulwo/graphics/PlayerGraphicsComponent.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dev/raoulwo/graphics/PlayerGraphicsComponent.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/dev/raoulwo/input/InputComponent.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dev/raoulwo/input/InputComponent.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/dev/raoulwo/input/NonPlayerInputComponent.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dev/raoulwo/input/NonPlayerInputComponent.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/dev/raoulwo/input/PlayerInputComponent.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dev/raoulwo/input/PlayerInputComponent.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/dev/raoulwo/input/ProjectileInputComponent.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dev/raoulwo/input/ProjectileInputComponent.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/dev/raoulwo/physics/ProjectilePhysicsComponent.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dev/raoulwo/physics/ProjectilePhysicsComponent.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/dev/raoulwo/physics/PlayerPhysicsComponent.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dev/raoulwo/physics/PlayerPhysicsComponent.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
