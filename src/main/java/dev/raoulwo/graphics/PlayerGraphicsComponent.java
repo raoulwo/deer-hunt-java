@@ -5,7 +5,6 @@ import dev.raoulwo.entity.Direction;
 import dev.raoulwo.entity.Entity;
 import dev.raoulwo.resource.Resource;
 
-import java.awt.*;
 import java.io.IOException;
 import java.util.HashMap;
 
@@ -42,19 +41,16 @@ public class PlayerGraphicsComponent implements GraphicsComponent {
                 idlePath,
                 "idle_south.png");
         idleAnimations.put(Direction.DOWN, idleSouthAnimation);
-
         Animation idleNorthAnimation = Resource.loadAnimation(
                 IDLE_ANIM_FRAME_DURATION,
                 idlePath,
                 "idle_north.png");
         idleAnimations.put(Direction.UP, idleNorthAnimation);
-
         Animation idleWestAnimation = Resource.loadAnimation(
                 IDLE_ANIM_FRAME_DURATION,
                 idlePath,
                 "idle_west.png");
         idleAnimations.put(Direction.LEFT, idleWestAnimation);
-
         Animation idleEastAnimation = Resource.loadAnimation(
                 IDLE_ANIM_FRAME_DURATION,
                 idlePath,
@@ -67,19 +63,16 @@ public class PlayerGraphicsComponent implements GraphicsComponent {
                 attackPath,
                 "attack_south.png");
         attackAnimations.put(Direction.DOWN, attackSouthAnimation);
-
         Animation attackNorthAnimation = Resource.loadAnimation(
                 ATTACK_ANIM_FRAME_DURATION,
                 attackPath,
                 "attack_north.png");
         attackAnimations.put(Direction.UP, attackNorthAnimation);
-
         Animation attackWestAnimation = Resource.loadAnimation(
                 ATTACK_ANIM_FRAME_DURATION,
                 attackPath,
                 "attack_west.png");
         attackAnimations.put(Direction.LEFT, attackWestAnimation);
-
         Animation attackEastAnimation = Resource.loadAnimation(
                 ATTACK_ANIM_FRAME_DURATION,
                 attackPath,
@@ -101,7 +94,6 @@ public class PlayerGraphicsComponent implements GraphicsComponent {
                 "walk_south_03.png",
                 "walk_south_04.png");
         walkAnimations.put(Direction.DOWN, walkSouthAnimation);
-
         Animation walkNorthAnimation = Resource.loadAnimation(
                 WALK_ANIM_FRAME_DURATION,
                 walkPath,
@@ -110,7 +102,6 @@ public class PlayerGraphicsComponent implements GraphicsComponent {
                 "walk_north_03.png",
                 "walk_north_04.png");
         walkAnimations.put(Direction.UP, walkNorthAnimation);
-
         Animation walkWestAnimation = Resource.loadAnimation(
                 WALK_ANIM_FRAME_DURATION,
                 walkPath,
@@ -119,7 +110,6 @@ public class PlayerGraphicsComponent implements GraphicsComponent {
                 "walk_west_03.png",
                 "walk_west_04.png");
         walkAnimations.put(Direction.LEFT, walkWestAnimation);
-
         Animation walkEastAnimation = Resource.loadAnimation(
                 WALK_ANIM_FRAME_DURATION,
                 walkPath,

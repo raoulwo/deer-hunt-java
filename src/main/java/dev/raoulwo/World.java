@@ -92,6 +92,10 @@ public class World {
         int x = tile.x();
         int y = tile.y();
 
+        return getEntity(x, y);
+    }
+
+    public Entity getEntity(int x, int y) {
         for (Entity entity : entities.values()) {
             TileCoordinate entityTile = Tile.pixelToTileCoordinate(entity.x, entity.y);
             if (entityTile.x() == x && entityTile.y() == y) {

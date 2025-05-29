@@ -1,5 +1,6 @@
 package dev.raoulwo.input;
 
+import dev.raoulwo.World;
 import dev.raoulwo.entity.Entity;
 import dev.raoulwo.entity.State;
 
@@ -13,7 +14,7 @@ public class NonPlayerInputComponent implements InputComponent {
     private int attackedCooldownCounter = ATTACKED_STATE_COOLDOWN;
 
     @Override
-    public void update(Entity entity) {
+    public void update(World world, Entity entity) {
         if (entity.state == State.ATTACKED) {
             attackedDurationCounter++;
             if (attackedDurationCounter >= ATTACKED_STATE_DURATION) {

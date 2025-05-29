@@ -84,7 +84,7 @@ public class Entity {
     }
 
     public void update(World world) {
-        input.update(this);
+        input.update(world, this);
         physics.update(world, this);
     }
 }
