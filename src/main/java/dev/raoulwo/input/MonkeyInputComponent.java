@@ -16,9 +16,8 @@ public class MonkeyInputComponent implements InputComponent {
         if (entity.state == State.ATTACKED) {
             attackedDurationCounter++;
             if (attackedDurationCounter >= ATTACKED_STATE_DURATION) {
-                entity.state = State.IDLE;
-                entity.moving = false;
-                attackedDurationCounter = 0;
+                world.entities.remove(entity.name);
+                world.spawnMonkey();
             } else {
                 return;
             }

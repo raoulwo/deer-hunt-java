@@ -5,6 +5,7 @@ import dev.raoulwo.resource.Resource;
 import dev.raoulwo.tile.Obstacle;
 import dev.raoulwo.tile.Tile;
 import dev.raoulwo.tile.TileCoordinate;
+import dev.raoulwo.util.PixelCoordinate;
 
 import java.awt.image.BufferedImage;
 import java.util.concurrent.ConcurrentHashMap;
@@ -108,5 +109,33 @@ public class World {
 
     public void removeEntity(Entity entity) {
         entities.remove(entity.name);
+    }
+
+    public void spawnMonkey() {
+        TileCoordinate coordinate = getRandomFreeCoordinate();
+        PixelCoordinate pixelCoordinate = Tile.tileToPixelCoordinate(coordinate.x(), coordinate.y());
+        Entity monkey = Entity.createMonkey("monkey_" + System.currentTimeMillis());
+        monkey.x = pixelCoordinate.x();
+        monkey.y = pixelCoordinate.y();
+        entities.put(monkey.name, monkey);
+    }
+
+    public TileCoordinate getRandomFreeCoordinate() {
+        TileCoordinate result = null;
+
+        do {
+            int randomX = (int) (Math.random() * (MAX_LEVEL_COLUMNS - 32) + 16);
+            int randomY = (int) (Math.random() * (MAX_LEVEL_ROWS - 16) + 8);
+            TileCoordinate coordinate = new TileCoordinate(randomX, randomY);
+            if (getEntity(coordinate) != null) {
+                continue;
+            }
+            if (obstacles[coordinate.x()][coordinate.y()] != null) {
+                continue;
+            }
+            result = coordinate;
+        } while (result == null);
+
+        return result;
     }
 }
