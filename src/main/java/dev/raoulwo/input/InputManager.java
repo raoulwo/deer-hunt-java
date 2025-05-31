@@ -1,13 +1,16 @@
 package dev.raoulwo.input;
 
-import java.awt.event.KeyEvent;
-import java.awt.event.KeyListener;
+import java.awt.*;
+import java.awt.event.*;
 
 /**
  * A singleton class that manages user input.
  */
-public class InputManager implements KeyListener {
+public class InputManager implements KeyListener, MouseListener, MouseMotionListener {
     public boolean upPressed, downPressed, leftPressed, rightPressed, spacePressed;
+
+    public int mouseX, mouseY;
+    public boolean mousePressed;
 
     private static InputManager INSTANCE;
 
@@ -67,5 +70,37 @@ public class InputManager implements KeyListener {
 
     public boolean moveKeyPressed() {
         return upPressed || downPressed || leftPressed || rightPressed;
+    }
+
+    @Override
+    public void mouseClicked(MouseEvent e) {
+    }
+
+    @Override
+    public void mousePressed(MouseEvent e) {
+        mousePressed = true;
+    }
+
+    @Override
+    public void mouseReleased(MouseEvent e) {
+        mousePressed = false;
+    }
+
+    @Override
+    public void mouseEntered(MouseEvent e) {
+    }
+
+    @Override
+    public void mouseExited(MouseEvent e) {
+    }
+
+    @Override
+    public void mouseDragged(MouseEvent e) {
+    }
+
+    @Override
+    public void mouseMoved(MouseEvent e) {
+        mouseX = e.getX();
+        mouseY = e.getY();
     }
 }

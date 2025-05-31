@@ -1,5 +1,6 @@
 package dev.raoulwo.graphics;
 
+import dev.raoulwo.resource.Resource;
 import dev.raoulwo.tile.Obstacle;
 import dev.raoulwo.tile.Tile;
 import dev.raoulwo.ui.UserInterfaceElement;
@@ -25,9 +26,17 @@ public class Graphics {
 
     private final Graphics2D g;
     private final Camera camera = Camera.instance();
+    private Font font;
 
     public Graphics(final Graphics2D g) {
         this.g = g;
+
+
+        try {
+            font = Resource.loadFont("/ui/", "font.ttf");
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     public void drawTile(BufferedImage image, int x, int y) {
@@ -45,6 +54,10 @@ public class Graphics {
         g.drawImage(image, screenX, screenY, Graphics.SCALED_TILE_SIZE, Graphics.SCALED_TILE_SIZE, null);
     }
 
+    public void drawImage(BufferedImage image, int x, int y, int width, int height) {
+        g.drawImage(image, x, y, width, height, null);
+    }
+
     public void drawObstacle(Obstacle obstacle, int x, int y) {
         if (x == obstacle.coordinate.x() && y == obstacle.coordinate.y()) {
             PixelCoordinate pixel = Tile.tileToPixelCoordinate(x, y);
@@ -59,8 +72,19 @@ public class Graphics {
         g.drawRect( x, y, width, height);
     }
 
-    public void drawUserInterfaceElement(UserInterfaceElement uiElement) {
-        g.drawImage(uiElement.image, uiElement.x, uiElement.y, uiElement.width * uiElement.scale, uiElement.height * uiElement.scale, null);
+    public void drawUserInterfaceElement(UserInterfaceElement element) {
+        g.drawImage(element.getImage(),
+                element.getX(),
+                element.getY(),
+                element.getWidth() * element.getScale(),
+                element.getHeight() * element.getScale(),
+                null);
+    }
+
+    public void drawText(String text, int x, int y, float fontSize, Color color) {
+        g.setFont(font.deriveFont(fontSize));
+        g.setColor(color);
+        g.drawString(text, x, y);
     }
 }
 

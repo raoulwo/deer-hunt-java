@@ -4,6 +4,7 @@ import dev.raoulwo.animation.Animation;
 import dev.raoulwo.animation.AnimationSprite;
 
 import javax.imageio.ImageIO;
+import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -83,5 +84,14 @@ public class Resource {
         }
 
         return tileCodes;
+    }
+
+    public static Font loadFont(String pathPrefix, String file) throws IOException, FontFormatException {
+        try  (InputStream stream = Resource.class.getResourceAsStream(pathPrefix + file)) {
+            if (stream == null) {
+                throw new IOException("File not found");
+            }
+            return Font.createFont(Font.TRUETYPE_FONT, stream);
+        }
     }
 }

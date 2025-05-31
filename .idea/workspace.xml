@@ -6,10 +6,15 @@
   <component name="ChangeListManager">
     <list default="true" id="a7c0e687-51cd-47cb-9f7e-eaa31dcd9705" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/dev/raoulwo/entity/Entity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dev/raoulwo/entity/Entity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/dev/raoulwo/entity/MonkeyGraphicsComponent.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dev/raoulwo/graphics/MonkeyGraphicsComponent.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/dev/raoulwo/entity/MonkeyInputComponent.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dev/raoulwo/input/MonkeyInputComponent.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/dev/raoulwo/entity/MonkeyPhysicsComponent.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dev/raoulwo/physics/MonkeyPhysicsComponent.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/dev/raoulwo/EntryPoint.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dev/raoulwo/EntryPoint.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/dev/raoulwo/Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dev/raoulwo/Game.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/dev/raoulwo/Panel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dev/raoulwo/Panel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/dev/raoulwo/Window.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dev/raoulwo/Window.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/dev/raoulwo/graphics/Graphics.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dev/raoulwo/graphics/Graphics.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/dev/raoulwo/input/InputManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dev/raoulwo/input/InputManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/dev/raoulwo/resource/Resource.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dev/raoulwo/resource/Resource.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/dev/raoulwo/ui/UserInterface.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dev/raoulwo/ui/UserInterface.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/dev/raoulwo/ui/UserInterfaceElement.java" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -19,6 +24,7 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
+        <option value="Interface" />
         <option value="Class" />
       </list>
     </option>
@@ -38,23 +44,23 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;Application.EntryPoint.executor&quot;: &quot;Run&quot;,
-    &quot;Maven.deer-hunt [run].executor&quot;: &quot;Run&quot;,
-    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;feature/game&quot;,
-    &quot;junie.onboarding.icon.badge.shown&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Application.EntryPoint.executor": "Run",
+    "Maven.deer-hunt [run].executor": "Run",
+    "ModuleVcsDetector.initialDetectionPerformed": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "git-widget-placeholder": "feature/game",
+    "junie.onboarding.icon.badge.shown": "true",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RunAnythingCache">
     <option name="myCommands">
       <command value="mvn run" />
@@ -112,7 +118,7 @@
       <workItem from="1747293112808" duration="17840000" />
       <workItem from="1747313797590" duration="5352000" />
       <workItem from="1747321781224" duration="1435000" />
-      <workItem from="1748678461729" duration="3783000" />
+      <workItem from="1748678461729" duration="22931000" />
     </task>
     <servers />
   </component>

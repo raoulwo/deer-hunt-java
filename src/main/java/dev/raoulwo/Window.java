@@ -25,11 +25,6 @@ public class Window {
         panel = new Panel(drawFn, options.width(), options.height());
         frame.add(panel);
 
-//        HostPanel host = new HostPanel(window);
-//        host.setBorder(new EmptyBorder(5, 5, 5, 5));
-//        window.add(host);
-//        host.run();
-
         // Resize the frame to fit the size of its subcomponents. In our case, it'll fit the game panel.
         frame.pack();
         frame.setLocationRelativeTo(null);

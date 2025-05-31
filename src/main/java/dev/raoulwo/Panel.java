@@ -35,6 +35,8 @@ public class Panel extends JPanel {
         // Allows the game panel to be focused to receive keyboard inputs.
         setFocusable(true);
         addKeyListener(InputManager.instance());
+        addMouseListener(InputManager.instance());
+        addMouseMotionListener(InputManager.instance());
     }
 
     /**

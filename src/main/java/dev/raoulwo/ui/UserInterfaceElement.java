@@ -1,20 +1,21 @@
 package dev.raoulwo.ui;
 
+import dev.raoulwo.Game;
+import dev.raoulwo.graphics.Graphics;
+
 import java.awt.image.BufferedImage;
 
-public class UserInterfaceElement {
-    public BufferedImage image;
+public interface UserInterfaceElement {
+    void update(Game game);
+    void draw(Graphics g);
+    boolean isActive();
+    void setActive(boolean active);
 
-    public int x, y;
-    public int width, height;
-    public int scale;
-
-    public UserInterfaceElement(BufferedImage image, int x, int y, int width, int height, int scale) {
-        this.x = x;
-        this.y = y;
-        this.image = image;
-        this.width = width;
-        this.height = height;
-        this.scale = scale;
-    }
+    BufferedImage getImage();
+    int getX();
+    int getY();
+    int getWidth();
+    int getHeight();
+    int getScale();
 }
+
