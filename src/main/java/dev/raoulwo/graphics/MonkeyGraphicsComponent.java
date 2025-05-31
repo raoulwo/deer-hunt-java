@@ -1,8 +1,8 @@
-package dev.raoulwo.entity;
+package dev.raoulwo.graphics;
 
 import dev.raoulwo.animation.Animation;
-import dev.raoulwo.graphics.Graphics;
-import dev.raoulwo.graphics.GraphicsComponent;
+import dev.raoulwo.entity.Direction;
+import dev.raoulwo.entity.Entity;
 import dev.raoulwo.resource.Resource;
 
 import java.io.IOException;

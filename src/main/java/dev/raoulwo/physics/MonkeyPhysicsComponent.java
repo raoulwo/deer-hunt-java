@@ -1,8 +1,9 @@
-package dev.raoulwo.entity;
+package dev.raoulwo.physics;
 
 import dev.raoulwo.World;
+import dev.raoulwo.entity.Entity;
+import dev.raoulwo.entity.State;
 import dev.raoulwo.graphics.Graphics;
-import dev.raoulwo.physics.PhysicsComponent;
 import dev.raoulwo.tile.Obstacle;
 import dev.raoulwo.tile.Tile;
 import dev.raoulwo.tile.TileCoordinate;

@@ -1,14 +1,9 @@
 package dev.raoulwo.entity;
 
 import dev.raoulwo.World;
-import dev.raoulwo.graphics.Graphics;
-import dev.raoulwo.graphics.GraphicsComponent;
-import dev.raoulwo.graphics.PlayerGraphicsComponent;
-import dev.raoulwo.graphics.ProjectileGraphicsComponent;
-import dev.raoulwo.input.InputComponent;
-import dev.raoulwo.input.NonPlayerInputComponent;
-import dev.raoulwo.input.PlayerInputComponent;
-import dev.raoulwo.input.ProjectileInputComponent;
+import dev.raoulwo.graphics.*;
+import dev.raoulwo.input.*;
+import dev.raoulwo.physics.MonkeyPhysicsComponent;
 import dev.raoulwo.physics.PhysicsComponent;
 import dev.raoulwo.physics.PlayerPhysicsComponent;
 import dev.raoulwo.physics.ProjectilePhysicsComponent;

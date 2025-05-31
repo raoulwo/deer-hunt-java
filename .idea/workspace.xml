@@ -6,8 +6,10 @@
   <component name="ChangeListManager">
     <list default="true" id="a7c0e687-51cd-47cb-9f7e-eaa31dcd9705" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/dev/raoulwo/Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dev/raoulwo/Game.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/dev/raoulwo/physics/PlayerPhysicsComponent.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dev/raoulwo/physics/PlayerPhysicsComponent.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/dev/raoulwo/entity/Entity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dev/raoulwo/entity/Entity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/dev/raoulwo/entity/MonkeyGraphicsComponent.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dev/raoulwo/graphics/MonkeyGraphicsComponent.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/dev/raoulwo/entity/MonkeyInputComponent.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dev/raoulwo/input/MonkeyInputComponent.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/dev/raoulwo/entity/MonkeyPhysicsComponent.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dev/raoulwo/physics/MonkeyPhysicsComponent.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -110,6 +112,7 @@
       <workItem from="1747293112808" duration="17840000" />
       <workItem from="1747313797590" duration="5352000" />
       <workItem from="1747321781224" duration="1435000" />
+      <workItem from="1748678461729" duration="3783000" />
     </task>
     <servers />
   </component>

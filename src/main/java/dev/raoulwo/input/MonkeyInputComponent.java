@@ -1,7 +1,9 @@
-package dev.raoulwo.entity;
+package dev.raoulwo.input;
 
 import dev.raoulwo.World;
-import dev.raoulwo.input.InputComponent;
+import dev.raoulwo.entity.Direction;
+import dev.raoulwo.entity.Entity;
+import dev.raoulwo.entity.State;
 import dev.raoulwo.tile.Tile;
 import dev.raoulwo.tile.TileCoordinate;
 
