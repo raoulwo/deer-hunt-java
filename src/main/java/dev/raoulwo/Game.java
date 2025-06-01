@@ -105,11 +105,7 @@ public class Game implements Runnable {
      * @param g A utility graphics object.
      */
     private void draw(Graphics g) {
-        for (int row = 0; row < World.MAX_LEVEL_ROWS; row++) {
-            for (int col = 0; col < World.MAX_LEVEL_COLUMNS; col++) {
-                g.drawTile(world.floor[col][row].sprite, col, row);
-            }
-        }
+        g.drawImageRelativeToCamera(world.floorImage, 0, 0, World.MAX_LEVEL_COLUMNS * Graphics.SCALED_TILE_SIZE, World.MAX_LEVEL_ROWS * Graphics.SCALED_TILE_SIZE);
 
         for (int row = 0; row < World.MAX_LEVEL_ROWS; row++) {
             for (int col = 0; col < World.MAX_LEVEL_COLUMNS; col++) {

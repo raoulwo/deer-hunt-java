@@ -58,6 +58,12 @@ public class Graphics {
         g.drawImage(image, x, y, width, height, null);
     }
 
+    public void drawImageRelativeToCamera(BufferedImage image, int x, int y, int width, int height) {
+        int screenX = x - camera.x + Camera.SCREEN_X;
+        int screenY = y - camera.y + Camera.SCREEN_Y;
+        g.drawImage(image, screenX, screenY, width, height, null);
+    }
+
     public void drawObstacle(Obstacle obstacle, int x, int y) {
         if (x == obstacle.coordinate.x() && y == obstacle.coordinate.y()) {
             PixelCoordinate pixel = Tile.tileToPixelCoordinate(x, y);

@@ -19,49 +19,84 @@ public class World {
     public Obstacle[][] obstacles = new Obstacle[MAX_LEVEL_COLUMNS][MAX_LEVEL_ROWS];
     public ConcurrentMap<String, Entity> entities = new ConcurrentHashMap<>();
 
+    public BufferedImage floorImage;
+
     World() {
         try {
-            BufferedImage floorSprite = Resource.loadSprite("/sprites/tiles/floor/", "floor_12.png");
-            Tile floorTile = new Tile(floorSprite);
+            floorImage = Resource.loadSprite("/sprites/tiles/", "floor.png");
 
-            BufferedImage obstacleSprite = Resource.loadSprite("/sprites/tiles/obstacles/", "rock_01.png");
-            Tile obstacleTile = new Tile(obstacleSprite, true);
-//            Obstacle obstacle = new Obstacle(obstacleTile, new TileCoordinate(14, 4));
+            BufferedImage rock1Image = Resource.loadSprite("/sprites/tiles/obstacles/", "rock_01.png");
+            Tile rock1Tile = new Tile(rock1Image, true);
 
-            BufferedImage bigObstacleSprite = Resource.loadSprite("/sprites/tiles/obstacles/", "rock_04.png");
-            Tile bigObstacleTile = new Tile(bigObstacleSprite, true);
-//            Obstacle bigObstacle = new Obstacle(bigObstacleTile, new TileCoordinate(18, 10), 2, 2);
+            BufferedImage rock2Image = Resource.loadSprite("/sprites/tiles/obstacles/", "rock_02.png");
+            Tile rock2Tile = new Tile(rock2Image, true);
 
-            for (int row = 0; row < MAX_LEVEL_ROWS; row++) {
-                for (int col = 0; col < MAX_LEVEL_COLUMNS; col++) {
-                    floor[col][row] = floorTile;
-                }
-            }
+            BufferedImage rock3Image = Resource.loadSprite("/sprites/tiles/obstacles/", "rock_03.png");
+            Tile rock3Tile = new Tile(rock3Image, true);
+
+            BufferedImage rock4Image = Resource.loadSprite("/sprites/tiles/obstacles/", "rock_04.png");
+            Tile rock4Tile = new Tile(rock4Image, true);
+
+            BufferedImage rock5Image = Resource.loadSprite("/sprites/tiles/obstacles/", "rock_05.png");
+            Tile rock5Tile = new Tile(rock5Image, true);
+
+            BufferedImage rock6Image = Resource.loadSprite("/sprites/tiles/obstacles/", "rock_06.png");
+            Tile rock6Tile = new Tile(rock6Image, true);
+
+            BufferedImage rock7Image = Resource.loadSprite("/sprites/tiles/obstacles/", "rock_07.png");
+            Tile rock7Tile = new Tile(rock7Image, true);
+
+            BufferedImage stumpImage = Resource.loadSprite("/sprites/tiles/obstacles/", "stump.png");
+            Tile stumpTile = new Tile(stumpImage, true);
+
+            BufferedImage treeImage = Resource.loadSprite("/sprites/tiles/obstacles/", "tree.png");
+            Tile treeTile = new Tile(treeImage, true);
+
+            addObstacle(new Obstacle(treeTile, new TileCoordinate(39, 23), 3, 3));
+            addObstacle(new Obstacle(treeTile, new TileCoordinate(61, 28), 3, 3));
+            addObstacle(new Obstacle(treeTile, new TileCoordinate(33, 37), 3, 3));
+            addObstacle(new Obstacle(treeTile, new TileCoordinate(44, 8), 3, 3));
+            addObstacle(new Obstacle(treeTile, new TileCoordinate(16, 18), 3, 3));
+
+            addObstacle(new Obstacle(stumpTile, new TileCoordinate(36, 17), 1, 1));
+            addObstacle(new Obstacle(stumpTile, new TileCoordinate(44, 17), 1, 1));
+            addObstacle(new Obstacle(stumpTile, new TileCoordinate(36, 31), 1, 1));
+            addObstacle(new Obstacle(stumpTile, new TileCoordinate(44, 31), 1, 1));
+            addObstacle(new Obstacle(stumpTile, new TileCoordinate(33, 20), 1, 1));
+            addObstacle(new Obstacle(stumpTile, new TileCoordinate(33, 28), 1, 1));
+            addObstacle(new Obstacle(stumpTile, new TileCoordinate(47, 20), 1, 1));
+            addObstacle(new Obstacle(stumpTile, new TileCoordinate(47, 28), 1, 1));
+
+            addObstacle(new Obstacle(rock7Tile, new TileCoordinate(39, 34), 4, 3));
+            addObstacle(new Obstacle(rock7Tile, new TileCoordinate(38, 11), 4, 3));
+
+            addObstacle(new Obstacle(rock6Tile, new TileCoordinate(19, 23), 2, 3));
+            addObstacle(new Obstacle(rock6Tile, new TileCoordinate(58, 23), 2, 3));
 
             for (int y = 0; y < MAX_LEVEL_ROWS; y += 2) {
                 for (int x = 0; x < 16; x += 2) {
-                    Obstacle bigObstacle = new Obstacle(bigObstacleTile, new TileCoordinate(x, y), 2, 2);
+                    Obstacle bigObstacle = new Obstacle(rock4Tile, new TileCoordinate(x, y), 2, 2);
                     addObstacle(bigObstacle);
                 }
             }
 
             for (int x = MAX_LEVEL_COLUMNS - 2; x > (MAX_LEVEL_COLUMNS - 1) - 16; x -= 2) {
                 for (int y = 0; y < MAX_LEVEL_ROWS; y += 2) {
-                    Obstacle bigObstacle = new Obstacle(bigObstacleTile, new TileCoordinate(x, y), 2, 2);
+                    Obstacle bigObstacle = new Obstacle(rock4Tile, new TileCoordinate(x, y), 2, 2);
                     addObstacle(bigObstacle);
                 }
             }
 
             for (int y = 0; y < 8; y += 2) {
                 for (int x = 0; x < MAX_LEVEL_COLUMNS; x += 2) {
-                    Obstacle bigObstacle = new Obstacle(bigObstacleTile, new TileCoordinate(x, y), 2, 2);
+                    Obstacle bigObstacle = new Obstacle(rock4Tile, new TileCoordinate(x, y), 2, 2);
                     addObstacle(bigObstacle);
                 }
             }
 
             for (int y = MAX_LEVEL_ROWS - 2; y > (MAX_LEVEL_ROWS - 1) - 8; y -= 2) {
                 for (int x = 0; x < MAX_LEVEL_COLUMNS; x += 2) {
-                    Obstacle bigObstacle = new Obstacle(bigObstacleTile, new TileCoordinate(x, y), 2, 2);
+                    Obstacle bigObstacle = new Obstacle(rock4Tile, new TileCoordinate(x, y), 2, 2);
                     addObstacle(bigObstacle);
                 }
             }
