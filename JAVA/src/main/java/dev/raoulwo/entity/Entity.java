@@ -11,6 +11,9 @@ import dev.raoulwo.tile.Tile;
 import dev.raoulwo.tile.TileCoordinate;
 import dev.raoulwo.util.PixelCoordinate;
 
+/**
+ * Represents the game entities, acting as a container for various components.
+ */
 public class Entity {
     // The name of the entity, it must be unique.
     public String name;
@@ -38,13 +41,13 @@ public class Entity {
         this.graphics = graphics;
     }
 
-    public static Entity createPlayer(String name) {
-        return new Entity(name,
-                new PlayerInputComponent(),
-                new PlayerPhysicsComponent(),
-                new PlayerGraphicsComponent(name, false));
-    }
-
+    /**
+     * Factory method to create a player entity.
+     *
+     * @param name Name of the player entity, must be unique.
+     * @param centerCamera Center camera on entity if true.
+     * @return The newly created player entity.
+     */
     public static Entity createPlayer(String name, boolean centerCamera) {
         return new Entity(name,
                 new PlayerInputComponent(),
@@ -52,6 +55,12 @@ public class Entity {
                 new PlayerGraphicsComponent(name, centerCamera));
     }
 
+    /**
+     * Factory method to create a non player character.
+     *
+     * @param name Name of the non player character, must be unique.
+     * @return The newly created non player character.
+     */
     public static Entity createNonPlayer(String name) {
         return new Entity(name,
                 new NonPlayerInputComponent(),
@@ -59,6 +68,12 @@ public class Entity {
                 new PlayerGraphicsComponent(name, false));
     }
 
+    /**
+     * Factory method to create a monkey entity.
+     *
+     * @param name Name of the monkey, must be unique.
+     * @return The newly created monkey entity.
+     */
     public static Entity createMonkey(String name) {
         return new Entity(name,
                 new MonkeyInputComponent(),
@@ -67,6 +82,14 @@ public class Entity {
                 );
     }
 
+    /**
+     * Factory method to create a projectile entity.
+     *
+     * @param name Name of the projectile entity, must be unique.
+     * @param position Tile coordinate the projectile should be spawned at.
+     * @param direction Direction the projectile should move in.
+     * @return The newly created projectile entity.
+     */
     public static Entity createProjectile(String name, TileCoordinate position, Direction direction) {
         Entity projectile = new Entity(name,
                 new ProjectileInputComponent(),
@@ -80,6 +103,11 @@ public class Entity {
         return projectile;
     }
 
+    /**
+     * Updates the entity, called from within the game loop.
+     *
+     * @param world The world the entity resides in.
+     */
     public void update(World world) {
         input.update(world, this);
         physics.update(world, this);

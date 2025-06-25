@@ -7,6 +7,9 @@ import dev.raoulwo.entity.State;
 import dev.raoulwo.tile.Tile;
 import dev.raoulwo.tile.TileCoordinate;
 
+/**
+ * The input component of a monkey entity..
+ */
 public class MonkeyInputComponent implements InputComponent {
     private final static int ATTACKED_STATE_DURATION = 30;
     private int attackedDurationCounter = 0;

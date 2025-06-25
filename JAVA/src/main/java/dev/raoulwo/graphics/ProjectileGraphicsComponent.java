@@ -5,6 +5,9 @@ import dev.raoulwo.resource.Resource;
 
 import java.awt.image.BufferedImage;
 
+/**
+ * Graphics component to render projectile entities.
+ */
 public class ProjectileGraphicsComponent implements GraphicsComponent {
 
     private BufferedImage sprite;

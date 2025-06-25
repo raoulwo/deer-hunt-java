@@ -1,5 +1,8 @@
 package dev.raoulwo.util;
 
+/**
+ * Represents the elapsed time between frames used for time sensitive operations.
+ */
 public class Time {
     public static final int TARGET_FRAMES_PER_SECOND = 60;
     public static final double TARGET_SECONDS_PER_FRAME =  1.0 / TARGET_FRAMES_PER_SECOND;

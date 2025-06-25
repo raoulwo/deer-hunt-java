@@ -1,5 +1,8 @@
 package dev.raoulwo.tile;
 
+/**
+ * Represents an obstacle in the game world.
+ */
 public class Obstacle {
     public Tile tile;
 
@@ -11,9 +14,5 @@ public class Obstacle {
         this.coordinate = coordinate;
         this.width = width;
         this.height = height;
-    }
-
-    public Obstacle(Tile tile, TileCoordinate coordinate) {
-        this(tile, coordinate, 1, 1);
     }
 }

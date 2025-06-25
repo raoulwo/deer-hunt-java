@@ -8,6 +8,9 @@ import dev.raoulwo.tile.Obstacle;
 import dev.raoulwo.tile.Tile;
 import dev.raoulwo.tile.TileCoordinate;
 
+/**
+ * The physics component of a projectile entity.
+ */
 public class ProjectilePhysicsComponent implements PhysicsComponent {
 
     private int speed = 8;

@@ -8,6 +8,9 @@ import dev.raoulwo.tile.Obstacle;
 import dev.raoulwo.tile.Tile;
 import dev.raoulwo.tile.TileCoordinate;
 
+/**
+ * The physics component of a player entity.
+ */
 public class PlayerPhysicsComponent implements PhysicsComponent {
 
     // NOTE: The tile size should be evenly divisible by the player speed, else the player coordinates

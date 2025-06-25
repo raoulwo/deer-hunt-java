@@ -19,6 +19,9 @@ import java.util.Comparator;
  */
 public class Game implements Runnable {
 
+    /**
+     * The game duration in seconds.
+     */
     public static final int GAME_TIME = 60;
 
     private final Thread thread = new Thread(this);
@@ -38,7 +41,6 @@ public class Game implements Runnable {
     public Game() {
         // We pass the draw method as a callback to the window.
         this.window = new Window(this::draw, new WindowOptions());
-
     }
 
     /**
@@ -100,7 +102,8 @@ public class Game implements Runnable {
     }
 
     /**
-     * A callback that contains any graphics we want to render for our game. Should not be called manually.
+     * A callback that contains any graphics we want to render for our game. Should not be called manually,
+     * since it is called from within the game loop.
      *
      * @param g A utility graphics object.
      */
@@ -125,6 +128,9 @@ public class Game implements Runnable {
         ui.draw(g);
     }
 
+    /**
+     * Starts the game from the main menu.
+     */
     public void startGame() {
         gameStarted = true;
         startTime = System.currentTimeMillis();
@@ -210,6 +216,9 @@ public class Game implements Runnable {
         world.entities.put(monkey8.name, monkey8);
     }
 
+    /**
+     * Stops the game, resets the game entities and displays the menu including the winner.
+     */
     private void stopGame() {
         gameStarted = false;
 

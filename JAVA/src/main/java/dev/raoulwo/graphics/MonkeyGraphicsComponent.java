@@ -8,6 +8,9 @@ import dev.raoulwo.resource.Resource;
 import java.io.IOException;
 import java.util.HashMap;
 
+/**
+ * Graphics component used to render monkey entities.
+ */
 public class MonkeyGraphicsComponent implements GraphicsComponent {
 
     private static final int IDLE_ANIM_FRAME_DURATION = 1;

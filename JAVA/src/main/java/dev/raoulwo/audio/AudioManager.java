@@ -5,6 +5,9 @@ import javax.sound.sampled.AudioSystem;
 import javax.sound.sampled.Clip;
 import java.net.URL;
 
+/**
+ * A singleton class used to handle the game audio.
+ */
 public class AudioManager {
     public final URL healSound;
     public final URL fightMusic;
@@ -25,22 +28,35 @@ public class AudioManager {
         return INSTANCE;
     }
 
+    /**
+     * Plays the given audio track in a loop.
+     *
+     * @param url The url of the audio track to play.
+     */
     public void playMusic(URL url) {
         setFile(url);
         play();
         loop();
     }
 
+    /**
+     * Stops the currently playing audio track.
+     */
     public void stopMusic() {
         stop();
     }
 
+    /**
+     * Plays the given audio track once.
+     *
+     * @param url The url of the audio track to play.
+     */
     public void playSound(URL url) {
         setFile(url);
         play();
     }
 
-    public void setFile(URL url) {
+    private void setFile(URL url) {
         try {
             AudioInputStream ais = AudioSystem.getAudioInputStream(url);
             clip = AudioSystem.getClip();
@@ -50,15 +66,15 @@ public class AudioManager {
         }
     }
 
-    public void play() {
+    private void play() {
         clip.start();
     }
 
-    public void loop() {
+    private void loop() {
         clip.loop(Clip.LOOP_CONTINUOUSLY);
     }
 
-    public void stop() {
+    private void stop() {
         clip.stop();
     }
 }

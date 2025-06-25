@@ -2,6 +2,9 @@ package dev.raoulwo.ui;
 
 import java.awt.image.BufferedImage;
 
+/**
+ * Abstract base class for all UI elements.
+ */
 public abstract class BaseUserInterfaceElement implements UserInterfaceElement {
     protected int x, y;
     protected int width, height;

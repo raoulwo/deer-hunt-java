@@ -8,6 +8,9 @@ import dev.raoulwo.resource.Resource;
 import java.io.IOException;
 import java.util.HashMap;
 
+/**
+ * Graphics component to render the player entity.
+ */
 public class PlayerGraphicsComponent implements GraphicsComponent {
 
     private static final int IDLE_ANIM_FRAME_DURATION = 1;

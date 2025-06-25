@@ -31,6 +31,9 @@ public class Window {
         frame.setVisible(true);
     }
 
+    /**
+     * Repaints the screen. Should not be called manually since it is called from within the game loop.
+     */
     public void repaint() {
         panel.repaint();
     }

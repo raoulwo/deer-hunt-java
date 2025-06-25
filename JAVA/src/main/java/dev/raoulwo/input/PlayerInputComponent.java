@@ -5,7 +5,9 @@ import dev.raoulwo.entity.Direction;
 import dev.raoulwo.entity.Entity;
 import dev.raoulwo.entity.State;
 
-
+/**
+ * The input component of a player entity.
+ */
 public class PlayerInputComponent implements InputComponent {
     private InputManager input = InputManager.instance();
 

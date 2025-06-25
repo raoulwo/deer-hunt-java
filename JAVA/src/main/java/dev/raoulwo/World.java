@@ -11,8 +11,19 @@ import java.awt.image.BufferedImage;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ConcurrentMap;
 
+/**
+ * Represents the game world including its tiles, obstacles and entities.
+ */
 public class World {
+
+    /**
+     * Maximum number of world columns.
+     */
     public static final int MAX_LEVEL_COLUMNS = 80;
+
+    /**
+     * Maximum number of world rows.
+     */
     public static final int MAX_LEVEL_ROWS = 48;
 
     public Tile[][] floor = new Tile[MAX_LEVEL_COLUMNS][MAX_LEVEL_ROWS];
@@ -107,6 +118,11 @@ public class World {
 
     }
 
+    /**
+     * Used to add an obstacle to the game world.
+     *
+     * @param obstacle The obstacle to be added.
+     */
     public void addObstacle(Obstacle obstacle) {
         int tileX = obstacle.coordinate.x();
         int tileY = obstacle.coordinate.y();
@@ -124,6 +140,12 @@ public class World {
         }
     }
 
+    /**
+     * Used to fetch an entity at given tile.
+     *
+     * @param tile The tile coordinate at which to fetch the entity.
+     * @return The entity at given tile coordinate, or null if no entity exists at given coordinate.
+     */
     public Entity getEntity(TileCoordinate tile) {
         int x = tile.x();
         int y = tile.y();
@@ -131,6 +153,13 @@ public class World {
         return getEntity(x, y);
     }
 
+    /**
+     * Used to fetch an entity at given tile.
+     *
+     * @param x The x tile coordinate.
+     * @param y The y tile coordinate.
+     * @return The entity at given tile coordinate, or null if no entity exists at given coordinate.
+     */
     public Entity getEntity(int x, int y) {
         for (Entity entity : entities.values()) {
             TileCoordinate entityTile = Tile.pixelToTileCoordinate(entity.x, entity.y);
@@ -142,10 +171,18 @@ public class World {
         return null;
     }
 
+    /**
+     * Removes the given entity from the world.
+     *
+     * @param entity The entity to remove from the game world.
+     */
     public void removeEntity(Entity entity) {
         entities.remove(entity.name);
     }
 
+    /**
+     * Spawns a monkey at a random unoccupied coordinate.
+     */
     public void spawnMonkey() {
         TileCoordinate coordinate = getRandomFreeCoordinate();
         PixelCoordinate pixelCoordinate = Tile.tileToPixelCoordinate(coordinate.x(), coordinate.y());
@@ -155,7 +192,12 @@ public class World {
         entities.put(monkey.name, monkey);
     }
 
-    public TileCoordinate getRandomFreeCoordinate() {
+    /**
+     * Computes a random tile coordinate which is not occupied by an obstacle or entity.
+     *
+     * @return A randomly chosen unoccupied tile coordinate.
+     */
+    private TileCoordinate getRandomFreeCoordinate() {
         TileCoordinate result = null;
 
         do {

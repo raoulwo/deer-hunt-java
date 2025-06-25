@@ -4,7 +4,53 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a7c0e687-51cd-47cb-9f7e-eaa31dcd9705" name="Changes" comment="" />
+    <list default="true" id="a7c0e687-51cd-47cb-9f7e-eaa31dcd9705" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/dev/raoulwo/EntryPoint.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dev/raoulwo/EntryPoint.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/dev/raoulwo/Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dev/raoulwo/Game.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/dev/raoulwo/HostPanel.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/dev/raoulwo/Panel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dev/raoulwo/Panel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/dev/raoulwo/Window.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dev/raoulwo/Window.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/dev/raoulwo/WindowOptions.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dev/raoulwo/WindowOptions.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/dev/raoulwo/World.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dev/raoulwo/World.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/dev/raoulwo/animation/Animation.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dev/raoulwo/animation/Animation.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/dev/raoulwo/animation/AnimationSprite.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dev/raoulwo/animation/AnimationSprite.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/dev/raoulwo/audio/AudioManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dev/raoulwo/audio/AudioManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/dev/raoulwo/entity/Direction.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dev/raoulwo/entity/Direction.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/dev/raoulwo/entity/Entity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dev/raoulwo/entity/Entity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/dev/raoulwo/entity/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dev/raoulwo/entity/Player.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/dev/raoulwo/entity/State.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dev/raoulwo/entity/State.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/dev/raoulwo/graphics/Camera.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dev/raoulwo/graphics/Camera.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/dev/raoulwo/graphics/Graphics.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dev/raoulwo/graphics/Graphics.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/dev/raoulwo/graphics/GraphicsComponent.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dev/raoulwo/graphics/GraphicsComponent.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/dev/raoulwo/graphics/MonkeyGraphicsComponent.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dev/raoulwo/graphics/MonkeyGraphicsComponent.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/dev/raoulwo/graphics/PlayerGraphicsComponent.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dev/raoulwo/graphics/PlayerGraphicsComponent.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/dev/raoulwo/graphics/ProjectileGraphicsComponent.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dev/raoulwo/graphics/ProjectileGraphicsComponent.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/dev/raoulwo/input/InputComponent.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dev/raoulwo/input/InputComponent.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/dev/raoulwo/input/MonkeyInputComponent.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dev/raoulwo/input/MonkeyInputComponent.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/dev/raoulwo/input/NonPlayerInputComponent.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dev/raoulwo/input/NonPlayerInputComponent.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/dev/raoulwo/input/PlayerInputComponent.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dev/raoulwo/input/PlayerInputComponent.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/dev/raoulwo/input/ProjectileInputComponent.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dev/raoulwo/input/ProjectileInputComponent.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/dev/raoulwo/item/Heart.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/dev/raoulwo/item/Item.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/dev/raoulwo/physics/MonkeyPhysicsComponent.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dev/raoulwo/physics/MonkeyPhysicsComponent.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/dev/raoulwo/physics/PhysicsComponent.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dev/raoulwo/physics/PhysicsComponent.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/dev/raoulwo/physics/PlayerPhysicsComponent.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dev/raoulwo/physics/PlayerPhysicsComponent.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/dev/raoulwo/physics/ProjectilePhysicsComponent.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dev/raoulwo/physics/ProjectilePhysicsComponent.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/dev/raoulwo/resource/Resource.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dev/raoulwo/resource/Resource.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/dev/raoulwo/tile/Obstacle.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dev/raoulwo/tile/Obstacle.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/dev/raoulwo/tile/Tile.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dev/raoulwo/tile/Tile.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/dev/raoulwo/tile/TileManager.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/dev/raoulwo/tile/Tilemap.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/dev/raoulwo/ui/BaseUserInterfaceElement.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dev/raoulwo/ui/BaseUserInterfaceElement.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/dev/raoulwo/ui/ButtonElement.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dev/raoulwo/ui/ButtonElement.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/dev/raoulwo/ui/MenuElement.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dev/raoulwo/ui/MenuElement.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/dev/raoulwo/ui/PlayerOverlayElement.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dev/raoulwo/ui/PlayerOverlayElement.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/dev/raoulwo/ui/UserInterface.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dev/raoulwo/ui/UserInterface.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/dev/raoulwo/ui/UserInterfaceElement.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dev/raoulwo/ui/UserInterfaceElement.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/dev/raoulwo/util/Time.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dev/raoulwo/util/Time.java" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -19,7 +65,7 @@
     </option>
   </component>
   <component name="Git.Settings">
-    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
   </component>
   <component name="ProjectColorInfo">{
   &quot;customColor&quot;: &quot;&quot;,
@@ -41,6 +87,7 @@
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
     &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
     &quot;junie.onboarding.icon.badge.shown&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
@@ -109,6 +156,9 @@
       <workItem from="1747321781224" duration="1435000" />
       <workItem from="1748678461729" duration="28584000" />
       <workItem from="1748767836340" duration="5224000" />
+      <workItem from="1750858244324" duration="30000" />
+      <workItem from="1750858288995" duration="63000" />
+      <workItem from="1750860241521" duration="6626000" />
     </task>
     <servers />
   </component>

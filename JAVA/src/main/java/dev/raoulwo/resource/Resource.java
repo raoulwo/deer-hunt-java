@@ -48,6 +48,14 @@ public class Resource {
         return sprites;
     }
 
+    /**
+     * Loads an animation from images with shared path prefix.
+     * @param duration The duration of the animation.
+     * @param pathPrefix The shared path prefix of the animation sprites.
+     * @param files The animation sprites.
+     * @return A newly created animation.
+     * @throws IOException
+     */
     public static Animation loadAnimation(int duration, String pathPrefix, String... files) throws IOException {
         List<BufferedImage> sprites = loadSprites(pathPrefix, files);
         List<AnimationSprite> animationSprites = sprites
@@ -57,35 +65,14 @@ public class Resource {
         return new Animation(animationSprites);
     }
 
-    public static String[][] loadMap(String pathPrefix, String file) throws IOException {
-        // TODO: Hard-coded map dimensions for now.
-        final int ROW = 32;
-        final int COL = 44;
-        String[][] tileCodes = new String[ROW][COL];
-
-        try (InputStream stream = Resource.class.getResourceAsStream(pathPrefix + file)) {
-            if (stream == null) {
-                throw new IOException("File not found");
-            }
-
-            BufferedReader reader = new BufferedReader(new InputStreamReader(stream));
-
-            for (int row = 0; row < ROW; row++) {
-                String line = reader.readLine();
-                if (line == null) {
-                    break;
-                }
-
-                String[] codes = line.split("");
-                System.arraycopy(codes, 0, tileCodes[row], 0, COL);
-            }
-
-            reader.close();
-        }
-
-        return tileCodes;
-    }
-
+    /**
+     * Loads a TTF font with given path prefix.
+     * @param pathPrefix The path prefix of the font to be loaded.
+     * @param file The font file to be loaded.
+     * @return Returns a newly created font object.
+     * @throws IOException
+     * @throws FontFormatException
+     */
     public static Font loadFont(String pathPrefix, String file) throws IOException, FontFormatException {
         try  (InputStream stream = Resource.class.getResourceAsStream(pathPrefix + file)) {
             if (stream == null) {

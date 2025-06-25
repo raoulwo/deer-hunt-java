@@ -9,6 +9,9 @@ import dev.raoulwo.tile.TileCoordinate;
 
 import java.util.List;
 
+/**
+ * The input component of a non player entity.
+ */
 public class NonPlayerInputComponent implements InputComponent {
 
     private final static int ATTACKED_STATE_DURATION = 30;

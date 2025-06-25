@@ -8,8 +8,14 @@ import dev.raoulwo.resource.Resource;
 import java.awt.*;
 import java.awt.image.BufferedImage;
 
+/**
+ * Represents a button UI element.
+ */
 public class ButtonElement extends BaseUserInterfaceElement implements UserInterfaceElement {
 
+    /**
+     * The possible states of a button element.
+     */
     public enum ButtonState {
         NORMAL, HOVER, PRESSED;
     }

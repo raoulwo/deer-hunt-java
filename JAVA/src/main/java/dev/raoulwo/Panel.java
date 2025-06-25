@@ -10,18 +10,17 @@ import java.awt.*;
  * The panel is the component used for rendering our game's graphical content.
  */
 public class Panel extends JPanel {
+
     /**
      * Callback passed from the main game class so that we can define graphics calls there.
      */
     private final DrawFn drawFn;
 
-    // TODO: Created this constructor just to make the host panel compile.
     public Panel() {
         this.drawFn = null;
     }
 
     /**
-     *
      * @param drawFn A callback for rendering the game graphics.
      * @param width The panel width.
      * @param height The panel height

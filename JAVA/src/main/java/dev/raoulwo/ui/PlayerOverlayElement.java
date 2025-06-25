@@ -7,6 +7,9 @@ import dev.raoulwo.graphics.Graphics;
 import java.awt.*;
 import java.awt.image.BufferedImage;
 
+/**
+ * A player overlay UI element.
+ */
 public class PlayerOverlayElement extends BaseUserInterfaceElement implements UserInterfaceElement {
 
     private Entity player;

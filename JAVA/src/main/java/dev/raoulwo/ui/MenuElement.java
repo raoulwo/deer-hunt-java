@@ -8,6 +8,9 @@ import java.awt.*;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * A menu UI element.
+ */
 public class MenuElement extends BaseUserInterfaceElement implements UserInterfaceElement {
     public String title = "DEER HUNT";
 

@@ -8,6 +8,9 @@ import dev.raoulwo.resource.Resource;
 import java.awt.*;
 import java.awt.image.BufferedImage;
 
+/**
+ * Singleton class that manages the game's UI elements including main menu and HUD.
+ */
 public class UserInterface {
 
     private static UserInterface INSTANCE;
@@ -67,11 +70,19 @@ public class UserInterface {
         }
     }
 
+    /**
+     * Updates the menu UI.
+     * @param game The single game instance.
+     */
     public void update(Game game) {
         menu.update(game);
         timeElapsedSeconds = game.timeElapsedSeconds;
     }
 
+    /**
+     * Draws all active UI elements.
+     * @param g The {@link Graphics} object used to render graphics.
+     */
     public void draw(Graphics g) {
         if (menu.isActive()) {
             menu.draw(g);
@@ -84,6 +95,10 @@ public class UserInterface {
         }
     }
 
+    /**
+     * Creates a player overlay.
+     * @param player The player entity for which to create the overlay.
+     */
     public void createPlayerOverlay(Entity player) {
         if (player.name.equals("green")) {
             greenOverlay = new PlayerOverlayElement(32, 32, 48, 48, 2, player, portraitGreen, portraitBorder);

@@ -5,7 +5,13 @@ import dev.raoulwo.util.PixelCoordinate;
 
 import java.awt.image.BufferedImage;
 
+/**
+ * Represents a game tile.
+ */
 public class Tile {
+    /**
+     * The total size of a game tile.
+     */
     private static final int TILE_SIZE = Graphics.SCALED_TILE_SIZE;
 
     /**
