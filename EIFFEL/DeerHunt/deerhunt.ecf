@@ -1,20 +1,20 @@
 <?xml version="1.0" encoding="ISO-8859-1"?>
-<system xmlns="http://www.eiffel.com/developers/xml/configuration-1-23-0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.eiffel.com/developers/xml/configuration-1-23-0 http://www.eiffel.com/developers/xml/configuration-1-23-0.xsd" name="DeerHunt" uuid="BAEFBBF1-C807-4763-B17A-F6F58554CE77">
-	<target name="DeerHunt">
-		<root feature="make" class="APPLICATION"/>
-		<option warning="warning">
-			<assertions precondition="true" postcondition="true" check="true" invariant="true" loop="true" supplier_precondition="true"/>
-		</option>
+<system xmlns="http://www.eiffel.com/developers/xml/configuration-1-23-0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.eiffel.com/developers/xml/configuration-1-23-0 http://www.eiffel.com/developers/xml/configuration-1-23-0.xsd" name="deerhunt" uuid="BAEFBBF1-C807-4763-B17A-F6F58554CE77">
+	<target name="deerhunt">
+		<root class="ENTRY_POINT" feature="make"/>
 		<file_rule>
 			<exclude>/EIFGENs$</exclude>
 			<exclude>/\..*$</exclude>
 		</file_rule>
+		<option warning="warning">
+			<assertions precondition="true" postcondition="true" check="true" invariant="true" loop="true" supplier_precondition="true"/>
+		</option>
 		<setting name="console_application" value="true"/>
 		<capability>
 			<concurrency support="none"/>
 		</capability>
-		<precompile name="base_pre" location="$ISE_PRECOMP/base-safe.ecf"/>
-		<library name="base" location="$ISE_LIBRARY/library/base/base.ecf"/>
+		<precompile name="base_pre" location="$ISE_PRECOMP\base-safe.ecf"/>
+		<library name="base" location="$ISE_LIBRARY\library\base\base.ecf"/>
 		<cluster name="deerhunt" location=".\" recursive="true"/>
 	</target>
 </system>

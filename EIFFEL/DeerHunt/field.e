@@ -6,7 +6,7 @@ class
 	FIELD
 
 inherit
-	MAPOBJECT
+	MAP_OBJECT
 
 create
     default_make

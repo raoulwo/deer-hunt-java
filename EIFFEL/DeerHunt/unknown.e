@@ -1,12 +1,12 @@
 note
-	description: "The unknon Mapobject"
+	description: "The unknown Mapobject"
 	author: "MichaelWintersperger"
 
 class
 	UNKNOWN
 
 inherit
-	MAPOBJECT
+	MAP_OBJECT
 
 create
     default_make
